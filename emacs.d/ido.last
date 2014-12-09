@@ -1,0 +1,91 @@
+;;; -*- coding: utf-8 -*-
+
+;; ----- ido-last-directory-list -----
+(
+ ("/Users/" . "jmfurlott/")
+ ("/Users/jmfurlott/sites/case-study-unity/src/" . "shared/")
+ ("/Users/jmfurlott/Google Drive/" . "notes/")
+ ("/" . "Users/")
+ ("/Users/jmfurlott/sites/" . "case-study-unity/")
+ ("/Users/jmfurlott/AndroidStudioProjects/" . "FlashCards/")
+ ("/Users/jmfurlott/" . "sites/")
+)
+
+;; ----- ido-work-directory-list -----
+(
+ "/Users/jmfurlott/Google Drive/notes/"
+ "/Users/jmfurlott/sites/viking/js/components/"
+)
+
+;; ----- ido-work-file-list -----
+(
+ "todo.org"
+ "SiteNav.jsx"
+)
+
+;; ----- ido-dir-file-cache -----
+(
+ ("/Users/jmfurlott/sites/case-study-unity/" (21637 59064 0 0) "src/" "public/" "package.json" "npm-debug.log" "node_modules/" "icons/" "gulpfile.js" "gulp/" "dist/" "css/" "bower_components/" "bower.json" ".jshintrc" ".gitignore" ".git/" ".DS_Store" "../" "./")
+
+ ("/Users/jmfurlott/sites/" (21637 42947 0 0) "zackgraber/" "viking/" "ufye/" "scality/" "salesforce.html" "program.php" "pfcc/" "parisleaf-grows/" "jmfurlott/" "greenpeacefund/" "greenpeaceblogs/" "cyber/" "chw/" "case-study-unity/" "case-study-scality/" "bluehighwaypizza/" "bayard/" ".DS_Store" "../" "./")
+
+ ("/Users/jmfurlott/" (21638 5253 0 0) "VirtualBox VMs/" "sites/" "Public/" "Pictures/" "node_modules/" "News/" "my-test/" "Music/" "Movies/" "Mail/" "Library/" "gulp-sass/" "Google Drive/" "geometeor/" "dump/" "Downloads/" "Documents/" "docker-test/" "Desktop/" "config/" "cis/" "Applications/" "AndroidStudioProjects/" ".zshrc~" ".zshrc.pre-oh-my-zsh" ".zshrc-e" ".zshrc" ".zsh_history" ".zsh-update" ".zcompdump-Joseph’s MacBook Air-5.0.5" ".wp-cli/" ".weechat/" ".vimrc" ".viminfo" ".vim/" ".vagrant.d/" ".twittering-mode.gpg" ".Trash/" ".tmux.conf~" ".tmux.conf" ".subversion/" ".ssh/" ".php_history" ".oh-my-zsh/" ".oh-my-fish/" ".npm/" ".node-gyp/" ".newsrc~" ".newsrc.eld~" ".newsrc.eld" ".newsrc-dribble~" ".newsrc-dribble" ".newsrc" ".mysql_history" ".m2/" ".local/" ".lein/" ".irssi/" ".ipython/" ".httpie/" ".gradle/" ".gnus~" ".gnus" ".gnupg/" ".gitignore" ".gitconfig" ".Genymobile/" ".gem/" ".emacs~" ".emacs.d/" ".emacs" ".elfeed/" ".DS_Store" ".dockercfg" ".cups/" ".config/" ".composer/" ".CFUserTextEncoding" ".cache/" ".boot2docker/" ".bash_history" ".authinfo~" ".authinfo" ".atom/" ".ansible/" ".android/" "#test.txt#" "#test.css#" "#.authinfo#" "../" "./")
+
+ ("/Library/WebServer/Documents/" (21637 42947 0 0) "zackgraber/" "viking/" "ufye/" "scality/" "salesforce.html" "program.php" "pfcc/" "parisleaf-grows/" "jmfurlott/" "greenpeacefund/" "greenpeaceblogs/" "cyber/" "chw/" "case-study-unity/" "case-study-scality/" "bluehighwaypizza/" "bayard/" ".DS_Store" "../" "./")
+
+ ("/Library/WebServer/Documents/case-study-scality/" (21620 34241 0 0) "views/" "utils/" "styles/" "README.md" "package.json" "npm-debug.log" "node_modules/" "js/" "img/" "icons/" "gulpfile.js" "gulp/" "dist/" "bower_components/" "bower.json" "app.js" ".jshintrc" ".gitignore" ".git/" ".DS_Store" "../" "./")
+
+ ("/Library/WebServer/Documents/case-study-scality/js/" (21620 44094 0 0) "vendor/" "theme.js" "modernizr.js" "index.js" "icon-symbols.svg" "components/" "compatibility.js" "../" "./")
+
+ ("/Library/WebServer/Documents/case-study-scality/js/components/" (21638 7119 0 0) "VerticalSlide.jsx" "VerticalScrollSlider.jsx" "UnityVideo.jsx" "SvgIcon.jsx" "Sticky.jsx" "slides/" "ScalityLogoAnimation/" "ScalityLogo.jsx" "RegularPolygon.jsx" "Markdown.jsx" "ImageCopySlide.jsx" "HtmlBoilerplate.jsx" "HorizontalSlider.jsx" "HorizontalSlide.jsx" "FirstImpression.jsx" "CopySlide.jsx" "Copy.jsx" "AttributeModule.jsx" "App.jsx" "../" "./")
+
+ ("/Library/WebServer/Documents/case-study-scality/js/components/slides/" (21638 7484 0 0) "WhoIsScality.jsx" "Process.jsx" "ProblemSolution.jsx" "NeedWebsite.jsx" "MotionGraphic.jsx~" "MotionGraphic.jsx" "Footer.jsx~" "Footer.jsx" "AspectRatioBox.jsx" "ApproachOLD.jsx" "Approach.jsx" ".#MotionGraphic.jsx" "../" "./")
+
+ ("/Users/jmfurlott/sites/case-study-scality/js/components/slides/" (21637 64611 0 0) "WhoIsScality.jsx" "Process.jsx" "ProblemSolution.jsx" "NeedWebsite.jsx" "MotionGraphic.jsx~" "MotionGraphic.jsx" "Footer.jsx~" "Footer.jsx" "AspectRatioBox.jsx" "ApproachOLD.jsx" "Approach.jsx" "../" "./")
+
+ ("/Library/WebServer/Documents/case-study-unity/src/shared/components/" (21637 59959 0 0) "VideoJs.jsx" "VerticalCenter.jsx" "UnityVideoAccordion.jsx" "UnityVideo.jsx" "UnityProcessVideo.jsx" "UnityFooter.jsx" "SvgIcon.jsx" "SingleProcess.jsx~" "SingleProcess.jsx" "ObjectFitCover.jsx" "NavMenu.jsx~" "NavMenu.jsx" "Header.jsx~" "Header.jsx" "GreenBorder.jsx~" "GreenBorder.jsx" "FirstImpression.jsx~" "FirstImpression.jsx" "Button.jsx" "Blockquote.jsx~" "Blockquote.jsx" "App.jsx" "AllProcesses.jsx~" "AllProcesses.jsx" "../" "./")
+
+ ("/Users/jmfurlott/sites/case-study-unity/src/shared/components/" (21637 46956 0 0) "VideoJs.jsx" "VerticalCenter.jsx" "UnityVideoAccordion.jsx" "UnityVideo.jsx" "UnityProcessVideo.jsx" "UnityFooter.jsx" "SvgIcon.jsx" "SingleProcess.jsx~" "SingleProcess.jsx" "ObjectFitCover.jsx" "NavMenu.jsx~" "NavMenu.jsx" "Header.jsx~" "Header.jsx" "GreenBorder.jsx~" "GreenBorder.jsx" "FirstImpression.jsx~" "FirstImpression.jsx" "Button.jsx" "Blockquote.jsx~" "Blockquote.jsx" "App.jsx" "AllProcesses.jsx~" "AllProcesses.jsx" ".#UnityProcessVideo.jsx" "#UnityProcessVideo.jsx#" "../" "./")
+
+ ("/Users/jmfurlott/sites/case-study-unity/src/shared/" (21630 2889 0 0) "init.js" "icon-symbols.svg" "components/" "../" "./")
+
+ ("/Users/jmfurlott/sites/case-study-unity/src/" (21632 49396 0 0) "views/" "theme.js" "shared/" "client/" "app.js" "../" "./")
+
+ ("/Users/jmfurlott/geometeor/wp-now/src/wp-content/themes/academy/" (21635 13610 0 0) "woocommerce.php" "woocommerce/" "template-statistics.php" "template-right.php" "template-register.php" "template-profile.php" "template-posts.php" "template-login.php" "template-left.php" "template-courses.php" "template-certificate.php" "style.css" "static/" "single.php" "single-quiz.php" "single-lesson.php" "single-course.php" "sidebar.php" "sidebar-profile.php" "sidebar-lesson.php" "searchform.php" "screenshot.png" "questions.php" "page.php" "page-tutoring.php" "page-test.php" "package.json" "node_modules/" "module-users.php" "module-slider.php" "module-related.php" "module-rating.php" "module-player.php" "module-links.php" "module-lessons.php" "module-form.php" "module-course.php" "module-attachments.php" "languages/" "index.php" "header.php" "gulpfile.js" "functions.php" "framework/" "footer.php" "content/" "comments.php" "author.php" "assets/" ".gitignore" ".DS_Store" "../" "./")
+
+ ("/Users/jmfurlott/geometeor/wp-now/src/wp-content/plugins/neurodev/" (21631 45847 0 0) "vendor/" "uninstall.php" "tests/" "public/" "phpunit.xml.dist" "neurodev.php" "languages/" "index.php" "includes/" "composer.lock" "composer.json" "admin/" ".gitignore" "../" "./")
+
+ ("/Users/jmfurlott/geometeor/wp-now/" (21635 7340 0 0) "Vagrantfile" "src/" "sql/" "README.md" "puppet/" "docs/" ".vagrant/" ".gitmodules" ".gitignore" ".gitattributes" ".git/" ".DS_Store" "../" "./")
+
+ ("/Users/jmfurlott/Google Drive/notes/" (21633 55150 0 0) "todo.org~" "todo.org" "test.org" "nodevember.org~" "nodevember.org" "flashcards.md" "emacs.md~" "emacs.md" "../" "./")
+
+ ("/Users/jmfurlott/Google Drive/" (21619 38236 0 0) "Old/" "notes/" "Literature/" "JosephFurlott.pdf" "Joe_Employee_Contract_5.22.2014.pdf" "Icon
+" "Gulp and Sass.gdoc" "Freelance/" "flare_test.ai" "Flare/" "__MACOSX/" ".DS_Store" "../" "./")
+
+ ("/Users/" (21570 35183 0 0) "Shared/" "jmfurlott/" ".localized" "../" "./")
+
+ ("/Library/" (21575 47485 0 0) "Widgets/" "WebServer/" "Video/" "User Pictures/" "Updates/" "SystemProfiler/" "StartupItems/" "Spotlight/" "Spelling/" "Speech/" "Security/" "Scripts/" "ScriptingAdditions/" "Screen Savers/" "Sandbox/" "Ruby/" "Receipts/" "QuickTime/" "QuickLook/" "Python/" "PrivilegedHelperTools/" "Printers/" "Preferences/" "PreferencePanes/" "Perl/" "PDF Services/" "OpenDirectory/" "Modem Scripts/" "Messages/" "Logs/" "LaunchDaemons/" "LaunchAgents/" "Keychains/" "Keyboard Layouts/" "Java/" "iTunes/" "Internet Plug-Ins/" "Input Methods/" "Image Capture/" "Graphics/" "Frameworks/" "Fonts/" "Filesystems/" "Extensions/" "Documentation/" "DirectoryServices/" "Dictionaries/" "Developer/" "Desktop Pictures/" "CoreMediaIO/" "Contextual Menu Items/" "Compositions/" "Components/" "ColorSync/" "ColorPickers/" "Caches/" "Automator/" "Audio/" "Application Support/" ".localized" "../" "./")
+
+ ("/Library/WebServer/" (21519 31477 0 0) "share/" "Documents/" "CGI-Executables/" "../" "./")
+
+ ("/Users/jmfurlott/sites/viking/src/shared/" (21633 54406 0 0) "utils/" "theme.js" "styleguide/" "stores/" "services/" "Routes.jsx" "mixins/" "init.js" "icon-symbols.svg" "constants/" "components/" "actions/" ".DS_Store" "../" "./")
+
+ ("/Users/jmfurlott/sites/greenpeaceblogs/" (21619 20874 0 0) "xmlrpc.php" "wp-trackback.php" "wp-signup.php" "wp-settings.php" "wp-register.php" "wp-pass.php" "wp-mail.php" "wp-login.php" "wp-load.php" "wp-links-opml.php" "wp-includes/" "wp-cron.php" "wp-content/" "wp-config.php" "wp-config-sample.php" "wp-comments-post.php" "wp-blog-header.php" "wp-admin/" "wp-activate.php" "readme.html" "php_error" "license.txt" "index.php" "googlee415801537251ec6.html" ".htaccess" ".gitignore" ".git/" ".DS_Store" "../" "./")
+
+ ("/Users/jmfurlott/sites/bluehighwaypizza/" (21611 36970 0 0) "source/" "scss/" "robots.txt" "readme.md" "outreach.php~" "outreach.php" "node_modules/" "nE" "menus/" "menu.html" "js/" "index_test.html" "index.html" "img/" "humans.txt" "gulpfile.js" "gulp/" "favicon.ico" "css/" "crossdomain.xml" "contests/" "blog/" "apple-touch-icon.png" "apple-touch-icon-precomposed.png" "apple-touch-icon-72x72-precomposed.png" "apple-touch-icon-57x57-precomposed.png" "apple-touch-icon-114x114-precomposed.png" "404.html" ".gitignore" ".gitattributes" ".git/" ".DS_Store" "../" "./")
+
+ ("/Users/jmfurlott/geometeor/wp-now/src/wp-content/plugins/neurodev/tests/" (21627 16059 0 0) "test-stripe-settings.php" "test-stripe-settings-phpunit.php" "test-stripe-customer.php" "test-stripe-auth.php" "test-plugin-activate.php" "NOW_TestStripeCase.php" "NOW_TestCase.php" "install-wp-tests.sh" "bootstrap.php" "../" "./")
+
+ ("/Library/WebServer/Documents/case-study-unity/" (21622 15153 0 0) "src/" "public/" "package.json" "npm-debug.log" "node_modules/" "gulpfile.js" "gulp/" "dist/" "css/" "bower.json" ".jshintrc" ".gitignore" ".git/" ".DS_Store" "../" "./")
+
+ ("/Users/jmfurlott/sites/cyber/responsive/scss/vendor/" (21613 18480 0 0) "jeet/" "../" "./")
+
+ ("/Users/jmfurlott/sites/viking/js/components/" (21604 55494 0 0) "VikingSlider.jsx~" "VikingSlider.jsx" "VerticalCenter.jsx" "SvgIcon.jsx" "Stats.jsx~" "Stats.jsx" "Slider.jsx" "SiteNav.jsx" "ProjectBanner.jsx~" "ProjectBanner.jsx" "Packery.jsx" "NextCaseStudy.jsx~" "NextCaseStudy.jsx" "NavMenu.jsx~" "Markdown.jsx" "Logo.jsx" "Header.jsx" "handlers/" "GoogleMap.jsx~" "GoogleMap.jsx" "Footer.jsx~" "Footer.jsx" "Button.jsx" "Blockquote.jsx~" "Blockquote.jsx" "App.jsx" "../" "./")
+
+ ("/Users/jmfurlott/AndroidStudioProjects/FlashCards/" (21573 46099 0 0) "settings.gradle" "local.properties" "gradlew.bat" "gradlew" "gradle.properties" "gradle/" "FlashCards.iml" "build.gradle" "build/" "app/" ".idea/" ".gradle/" ".gitignore" "../" "./")
+
+ ("/Users/jmfurlott/AndroidStudioProjects/" (21573 36010 0 0) "FlashCards/" "../" "./")
+)
+
+;; ----- ido-unc-hosts-cache -----
+t

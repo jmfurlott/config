@@ -1,0 +1,128 @@
+cat error.log 
+ff php.ini
+cat error.log 
+ls
+cd ..
+tar cvf bayard.zip bayard
+ls
+rm bayard.zip
+rm root@jmfurlott.com 
+ls
+cd geometeor/wp-now/
+ls
+cds rc
+cd src
+ls
+cd wp-content/
+ls
+cd themes/
+ls
+cd academy/
+ls
+rg
+rg
+ls
+ffow template-profile.php 
+cd ~
+ls
+cd sites/geo
+cd sites/bayard/
+ls
+mkdir states
+cd states/
+ls
+ls
+touch index.html
+touch categorize.php
+ls
+cp ~/Downloads/phptest-text.txt states.txt
+ls
+ffow states.txt 
+ls
+rm categorize.php 
+mv index.html index.php
+ff index.php 
+ls
+touch ajax.js
+ls
+ff ajax.js 
+npm start
+npm start
+ls
+cd ~/sites/
+ls
+cd case-study-scality/
+ls
+ls
+clear
+ls
+ls
+ls
+cd src
+ls
+cd js
+ls
+cd components/
+ls
+ffow App.jsx 
+ffow slides/Process.jsx
+ls
+cd slides/
+ls
+cp Approach.jsx ApproachOLD.jsx
+ff Approach.jsx
+ls
+ff slides/Process.jsx
+ff slides/ApproachOLD.jsx
+ff slides/Approach.jsx
+ls
+ls
+git stash
+ff slides/ApproachOLD.jsx
+ff slides/Approach.jsx
+ffow slides/Approach.jsx
+i
+gulp deploy
+cd ~/sites/bluehighwaypizza/
+cd ~/sites/bayard/
+ls
+cd states/
+ls
+ffow ajax.js 
+ff index.php 
+ff index.php 
+ls
+ls
+rm ajax.js\~
+ls
+rm index.php\~
+ls
+cd ..
+ls
+ff index.html 
+ls
+ff states/index.php 
+ls
+ff scss/base.scss
+ls
+cd ..
+ls
+tar cvf bayard.tar bayard
+ls
+rm bayard.tar
+cd bayard/
+ls
+cd bower_components/
+ls
+rm -rf breakpoint/
+tar cvf bayard.tar bayard
+cd ../..
+tar cvf bayard.tar bayard
+ls
+ls
+ls bayard.tar
+ls bayard/
+ff bayard/states/ajax.js
+rm bayard.tar
+tar cvf bayard.tar bayard
+exit
