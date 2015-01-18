@@ -1,128 +1,128 @@
-cat error.log 
-ff php.ini
-cat error.log 
+make watch
+make watch
+make watch
+make watch
+cd .....
+cd beta.parisleaf.com/
 ls
-cd ..
-tar cvf bayard.zip bayard
+ff .env
 ls
-rm bayard.zip
-rm root@jmfurlott.com 
+git checkout develop
+git pull
+git merge twitter
+git status
+git commit -m 'twitter merge'
+git push origin develop
+clear
+git branch
+git pull
+clear
+cd ~/sites/beta.parisleaf.com/
+clear
 ls
-cd geometeor/wp-now/
-ls
-cds rc
 cd src
+ls
+cd shared/
+ls
+ls
+cd components/
+ls
+cd ...
+..
+ls
+cd sass
+ls
+cd components/
+ls
+ff _Home.sass
+ff _Header.sass 
+ls
+cd ...
+ls
+cd src
+cd shared/
+ls
+cd om
+compass
+cd components/
+ls
+cp Button.js Metadata.js
+ff Metadata.js 
+ff Excerpt.js
+cp Metadata.js Excerpt.js
+ff Excerpt.js 
+ls
+ls
+ff AppNav.js
+ls
+cd ....
+ff .env
+ls
+cd ../wp-parisleaf/
 ls
 cd wp-content/
 ls
 cd themes/
 ls
-cd academy/
+cd parisleaf/
 ls
-rg
-rg
+ff functions.php
 ls
-ffow template-profile.php 
-cd ~
+git functions.php 
+git add functions.php 
+git commit -m 'added menu support to theme'
+git push origin master
+git pull
+git commit -m 'merge'
+git push origin master
+git push dokku master
+cd .....
+cd beta.parisleaf.com/
 ls
-cd sites/geo
-cd sites/bayard/
+ff .env
 ls
-mkdir states
-cd states/
+cd src/
 ls
+cd shared/components/
 ls
-touch index.html
-touch categorize.php
-ls
-cp ~/Downloads/phptest-text.txt states.txt
-ls
-ffow states.txt 
-ls
-rm categorize.php 
-mv index.html index.php
-ff index.php 
-ls
-touch ajax.js
-ls
-ff ajax.js 
-npm start
-npm start
-ls
-cd ~/sites/
-ls
-cd case-study-scality/
-ls
-ls
-clear
-ls
-ls
-ls
-cd src
-ls
-cd js
-ls
-cd components/
-ls
-ffow App.jsx 
-ffow slides/Process.jsx
-ls
-cd slides/
-ls
-cp Approach.jsx ApproachOLD.jsx
-ff Approach.jsx
-ls
-ff slides/Process.jsx
-ff slides/ApproachOLD.jsx
-ff slides/Approach.jsx
-ls
-ls
-git stash
-ff slides/ApproachOLD.jsx
-ff slides/Approach.jsx
-ffow slides/Approach.jsx
-i
-gulp deploy
-cd ~/sites/bluehighwaypizza/
-cd ~/sites/bayard/
-ls
-cd states/
-ls
-ffow ajax.js 
-ff index.php 
-ff index.php 
-ls
-ls
-rm ajax.js\~
-ls
-rm index.php\~
+ff AppHandler.js 
 ls
 cd ..
+..
+cd server/
+l
 ls
-ff index.html 
+cd routes/
 ls
-ff states/index.php 
+cd api
 ls
-ff scss/base.scss
+ff menus.js 
+cd ....
+cd ...
+cd wp-parisleaf/
 ls
+ff composer.json
 cd ..
 ls
-tar cvf bayard.tar bayard
+cd beta.parisleaf.com/
 ls
-rm bayard.tar
-cd bayard/
+cd src/shared/
 ls
-cd bower_components/
+cd services/
 ls
-rm -rf breakpoint/
-tar cvf bayard.tar bayard
-cd ../..
-tar cvf bayard.tar bayard
+ff APIService.js 
 ls
+ff __tests__/APIService-test.js
 ls
-ls bayard.tar
-ls bayard/
-ff bayard/states/ajax.js
-rm bayard.tar
-tar cvf bayard.tar bayard
-exit
+cd ....
+cd src/server/
+ls
+cd __tests__/
+ls
+cd ../routes
+ls
+cd api/
+ls
+cd __tests__/
+ls
+ff menus-test.js 

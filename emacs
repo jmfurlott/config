@@ -5,13 +5,46 @@
   (add-to-list 'package-archives '("melpa" . "http://melpa.milkbox.net/packages/") t)
  )
 
+;; Disable graphical dialogs
+(defadvice yes-or-no-p (around prevent-dialog activate)
+  "Prevent yes-or-no-p from activating a dialog"
+  (let ((use-dialog-box nil))
+    ad-do-it))
+(defadvice y-or-n-p (around prevent-dialog-yorn activate)
+  "Prevent y-or-n-p from activating a dialog"
+  (let ((use-dialog-box nil))
+    ad-do-it))
+
 ;; powerline 
 (add-to-list 'load-path "~/.emacs.d/vendor/emacs-powerline")
 (require 'cl)
 (require 'powerline)
 
+;; Fixing auto-save
+(setq auto-save-file-name-transforms '((".*"
+           "/tmp/emacs-autosave/_" t)))
+(setq auto-save-list-file-prefix "/tmp/emacs-autosave/.saves-")
+
+;; mingus
+(add-to-list 'load-path "~/.emacs.d/vendor/mingus")
+(require 'mingus)
+
+
+;; Set font
+;; (when (eq system-type 'darwin)
+;;       (set-face-attribute 'default nil :family "Inconsolata")
+;;       (set-face-attribute 'default nil :height 125)
+;; )
+
+(when (eq system-type 'darwin)
+      (set-face-attribute 'default nil :family "Inconsolata")
+      (set-face-attribute 'default nil :height 140)
+)
+
 ;; General scripts
 (add-to-list 'load-path' "~/.emacs.d/vendor")
+(global-set-key (kbd "<f5>") #'redraw-display)
+
 
 ;; Automatically hide compilation buffers
 (require 'aj-compilation)
@@ -42,8 +75,8 @@
 (global-set-key (kbd "C-x f") 'fiplr-find-file)
 ;; Flycheck
 (require 'flycheck)
-(add-hook 'js-mode-hook
-          (lambda () (flycheck-mode t)))
+;;(add-hook 'js-mode-hook
+;;          (lambda () (flycheck-mode t)))
 (setq flycheck-check-syntax-automatically '(mode-enabled save))
 
 ;; Tab size
@@ -65,6 +98,11 @@
   (let ((inhibit-read-only t))
     (erase-buffer)))
 
+(setq eshell-prompt-function (lambda nil
+    (concat
+     (propertize (eshell/pwd) 'face `(:foreground "#cc99cc"))
+     (propertize " $ " 'face `(:foreground "white")))))
+  (setq eshell-highlight-prompt nil)
 
 ;; Enable mouse support
 (unless window-system
@@ -86,6 +124,9 @@
 (emms-standard)
 (emms-default-players)
 
+;; Refresh all buffers on disk change
+(global-auto-revert-mode t)
+
 ;; neotree
 (add-to-list 'load-path "~/.emacs.d/neotree")
 (require 'neotree)
@@ -102,6 +143,11 @@
 (require 'exec-path-from-shell)
 (when (memq window-system '(mac ns))
   (exec-path-from-shell-initialize))
+
+;; Dockerfile mode
+(add-to-list 'load-path "~/.emacs.d/vendor/dockerfile-mode")
+(require 'dockerfile-mode)
+(add-to-list 'auto-mode-alist '("Dockerfile\\'" . dockerfile-mode))
 
 ;; magit
 (require 'magit)
@@ -132,8 +178,8 @@
 (require 'rainbow-mode)
 
 ;; Javascript
-(require 'js2-mode)
-(require 'js2-refactor)
+;; (require 'js2-mode)
+;; (require 'js2-refactor)
 
 ;; Web mode
 (require 'web-mode)
@@ -145,6 +191,9 @@
 (add-to-list 'auto-mode-alist '("\\.mustache\\'" . web-mode))
 (add-to-list 'auto-mode-alist '("\\.djhtml\\'" . web-mode))
 (add-to-list 'auto-mode-alist '("\\.html?\\'" . web-mode))
+(add-to-list 'auto-mode-alist '("\\.twig\\'" . web-mode))
+(add-to-list 'auto-mode-alist '("\\.js\\'" . web-mode))
+(add-to-list 'auto-mode-alist '("\\.jsx\\'" . web-mode))
 (setq web-indent-level 2)
 
 ;; Stack overflow
@@ -228,15 +277,15 @@
 ;;(load-theme 'odersky t)
 
 (add-to-list 'load-path "~/.emacs.d/themes/")
-(load-theme 'ujelly t)
-;;(load-theme 'tomorrow-night-eighties t)
+;;(load-theme 'ujelly t)
+(load-theme 'tomorrow-night-eighties t)
 ;;(load-theme 'tomorrow-night t)
+;;(load-theme 'tomorrow-night-paradise t)
+;;(load-theme 'tomorrow-night-bright t)
 
 ;; Disable bold fonts
 (set-face-bold-p 'bold nil)
 
-;; PHP
-(require 'php-mode)
 
 ;; Buffer move
 (require 'buffer-move)
@@ -340,8 +389,8 @@
 
 ;; Transparency
 ;;(set-frame-parameter (selected-frame) 'alpha '(<active> [<inactive>]))
- (set-frame-parameter (selected-frame) 'alpha '(85 85))
- (add-to-list 'default-frame-alist '(alpha 85 85))
+ (set-frame-parameter (selected-frame) 'alpha '(95 95))
+ (add-to-list 'default-frame-alist '(alpha 95 95))
 
 ;; Hex colors
 (defun xah-syntax-color-hex ()
@@ -369,12 +418,15 @@
 ;; power line
 (set-face-attribute 'mode-line nil
                     :foreground "Black"
-                    :background "White"
+                    :background "#99cc99"
                     :box nil)
 
 (setq powerline-color1 "grey10")
 (setq powerline-color2 "grey22")
 
+
+;; Turn off bell
+(setq ring-bell-function 'ignore)
 
 
 ;; Require EVIL
