@@ -1,0 +1,128 @@
+cd ..
+ls
+cd ..
+ls
+cd views/
+ls
+cat app.jade 
+ls
+clear
+cd ..
+ls
+cd src
+ls
+cd server/
+ls
+ff routes/
+ls
+cd routes/
+ls
+cd views/
+ls
+ff appIndex.js 
+ls
+cd work/
+ls
+cd booking-agreement-client/
+ls
+git pull
+ls
+clear
+cd js
+ls
+cd components/l
+ls
+cd components/
+ls
+cd BookingAgreement/
+ls
+ls
+ls
+cd Venues/
+ls
+cd ,,
+cd ..
+cd VenueSpaces/
+ls
+ffow SpaceDetails.js 
+ls
+cd ..
+ls
+ff BookingAgreement.js 
+ls
+ls
+cd ..
+ls
+cd ..
+ls
+cd utils/
+ls
+ls
+cd ..
+ls
+cd components/
+ls
+ls
+ls
+cd BookingAgreement/
+ls
+ff EssentialDetails.js 
+s
+ls
+ff FormGroup.js 
+l
+ls
+cd ContentBlocks/
+ls
+ff MarkdownEditor.js 
+ls
+ff ContentBlocks.js 
+ls
+ff ../EssentialDetails.js 
+ls
+cd ..
+ls
+ff BookingAgreement.js 
+ls
+c;ear
+clear
+ls
+clear
+ls -la
+clear
+ls
+cd work/
+ls
+ls -la
+clear
+cd booking-agreement-client/
+ls
+ls
+clear
+ls
+cd wo
+ls
+cd js
+ls
+cd components/
+ls
+cd bo
+ls
+cd BookingAgreement/
+ls -la
+clear
+ls
+cd VenueSpaces/
+ls
+ff SelectedSpace.js 
+cd ..
+ls
+cd ContentBlocks/
+ls
+ffow ContentBlocks.js 
+ls
+ff MarkdownEditor.js 
+ls
+clear
+ls
+ls
