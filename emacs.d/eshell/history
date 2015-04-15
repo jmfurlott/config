@@ -1,128 +1,128 @@
 cd ..
 ls
+cd utils/
+ls
+ff Helpers.js 
+ls
 cd ..
 ls
-cd views/
+cd components/
 ls
-cat app.jade 
+cd BookingAgreement/
+ls
+cd Activities/
+ls
 ls
 clear
-cd ..
+ff ActivityPage.js 
+ls
+ff Activity.js
+cd work
+cd booking-agreement-client/
+ls
+ls
+cd js
+cd stores/
+ls
+mv HistoryStore.js ActivityStore.js
+ff ActivityStore.js
+cd work/pointcatcher-consumer/
 ls
 cd src
 ls
-cd server/
+cd shared/
 ls
-ff routes/
+cd components/
+ls
+ls
+cd ..
+cd ..
+cd ..
+ls
+ff .env
+ls
+cd src
+cd server/
 ls
 cd routes/
 ls
-cd views/
+cd api/
 ls
-ff appIndex.js 
+ff factual.js 
 ls
-cd work/
+cd ...
 ls
-cd booking-agreement-client/
+cd ..
 ls
+cd ..
+cd scss
+ls
+cd components/
+ls
+ff _SearchResult.scss
+cd work/pointcatcher-consumer/
+ls
+cd scss
+ls
+ff main.scss
+ls
+cd components/
+ls
+ff _SearchResult.scss
+ff _Search.scss
+git stash
+git checkout master
 git pull
 ls
-clear
-cd js
-ls
-cd components/l
-ls
-cd components/
-ls
-cd BookingAgreement/
-ls
-ls
-ls
-cd Venues/
-ls
-cd ,,
-cd ..
-cd VenueSpaces/
-ls
-ffow SpaceDetails.js 
-ls
-cd ..
-ls
-ff BookingAgreement.js 
-ls
-ls
 cd ..
 ls
 cd ..
 ls
-cd utils/
+cd src/server/
 ls
+cd routes/
+ls
+cd api/
+ls
+ff factual.js 
+c work/
+cd work/pointcatcher-consumer/
+ls
+cd src/server/
+ls
+cd routes/api/
+ff factual.js 
+ls
+ff users.js 
+ls
+ff session.js
+cp users.js session.js
+ff session.js 
+ls
+ff index.js 
 ls
 cd ..
 ls
-cd components/
+cat index.js 
+cd ..
+ls
+ff app.js 
 ls
 ls
-ls
-cd BookingAgreement/
-ls
-ff EssentialDetails.js 
+ lsls
 s
 ls
-ff FormGroup.js 
-l
-ls
-cd ContentBlocks/
-ls
-ff MarkdownEditor.js 
-ls
-ff ContentBlocks.js 
-ls
-ff ../EssentialDetails.js 
-ls
 cd ..
 ls
-ff BookingAgreement.js 
-ls
-c;ear
-clear
+cd shared/
 ls
 clear
-ls -la
-clear
-ls
-cd work/
-ls
-ls -la
-clear
-cd booking-agreement-client/
-ls
-ls
-clear
-ls
-cd wo
-ls
-cd js
 ls
 cd components/
 ls
-cd bo
-ls
-cd BookingAgreement/
-ls -la
-clear
-ls
-cd VenueSpaces/
-ls
-ff SelectedSpace.js 
 cd ..
 ls
-cd ContentBlocks/
+cd services/ls
+cd services/
 ls
-ffow ContentBlocks.js 
-ls
-ff MarkdownEditor.js 
-ls
-clear
-ls
-ls
+ff SessionService.js

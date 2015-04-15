@@ -2,6 +2,7 @@
 
 ;; ----- ido-last-directory-list -----
 (
+ ("/home/jmfurlott/work/booking-agreement-client/" . "js/")
  ("/home/jmfurlott/work/pointcatcher-grails/" . "grails-app/")
  ("/home/jmfurlott/.emacs.d/" . "vendor/")
  ("/home/jmfurlott/" . ".emacs.d/")
@@ -30,11 +31,25 @@
 
 ;; ----- ido-dir-file-cache -----
 (
+ ("/home/jmfurlott/work/pointcatcher-consumer/src/server/routes/api/" (21806 55009 122821 245000) "index.js" "../" "./" "factual.js" "users.js")
+
+ ("/home/jmfurlott/.emacs.d/" (21806 34311 916052 504000) "ido.last" "ac-comphist.dat" "init.el~" "themes/" "org/" "url/" "tree-mode/" "auto-save-list/" "eshell/" "../" "./" "smart-mode-line/" "ido.last~" "recentf" "timelog" "elpa/" "windata/" "init.el" "vendor/" "linum+/" "multi-term/" "dirtree/")
+
+ ("/home/jmfurlott/" (21806 34281 818550 200000) "config/" ".fonts/" "android/" ".zsh-update" ".themes/" ".xsession-errors" ".zshrc" "Downloads/" ".mozilla/" "emacs/" ".xsession-errors.old" "Android/" ".cache/" "Pictures/" ".Xauthority" ".android/" ".oh-my-zsh/" ".babel.json" "ovim/" ".AndroidStudio/" ".vimrc" "Documents/" ".thunderbird/" ".local/" ".gnome/" ".profile" ".dmrc" ".ICEauthority" "../" ".ssh/" "blood-moon-utah.jpg" ".gitconfig" "./" ".zsh_history" ".bash_logout" ".vim/" "Videos/" ".gnupg/" ".config/" ".Xdefaults" ".nvm/" ".zcompdump-jmfurlott-linux-5.0.7" ".macromedia/" ".zcompdump" "core" ".sudo_as_admin_successful" "Templates/" "Public/" ".i3/" "Desktop/" "work/" ".emacs.d/" ".gconf/" ".dbus/" "i3-gaps/" ".irssi/" ".xfce4-session.verbose-log" ".adobe/" "W-9 Joseph Furlott.pdf" ".thumbnails/" ".erc/" "Music/" ".npm/" ".bash_history" ".pip/" ".xscreensaver" ".java/" ".pki/" ".node-gyp/" ".bashrc" ".viminfo" ".fehbg")
+
+ ("/home/jmfurlott/work/" (21802 54159 507858 297000) "ascender/" "pointcatcher-grails/" "pointcatcher-consumer/" "booking-agreement-client/" "../" "./")
+
+ ("/home/jmfurlott/work/booking-agreement-client/js/components/BookingAgreement/" (21806 32808 526635 484000) "Venues/" "Popup.js" "Status.js" "../" "ContentBlocks/" "./" "FormGroup.js" "VenueSpaces/" "BookingAgreement.js" "LineItems/" "Payments/" "Activities/" "EssentialDetails.js")
+
+ ("/home/jmfurlott/work/booking-agreement-client/js/components/BookingAgreement/Activities/" (21806 34425 613762 433000) "Activity.js" "ActivityPage.js" "../" "RecentActivity.js" "./" "ActivityHandler.js")
+
+ ("/home/jmfurlott/work/booking-agreement-client/" (21805 5124 207238 478000) "fonts/" "Dockerfile.base" "package.json" ".eslintrc" "index.html" ".gitignore" "supervisor.conf" "deploy.sh" "circle.yml" "README.md" "../" "Dockerfile" "LICENSE" "./" "css/" "CHANGELOG.rst" ".gitattributes" "js/" "node_modules/" "Dockerrun.aws.json" "start.sh" "nginx.conf" ".git/" "deploy_base.sh" "webpack.config.js" ".dockerignore")
+
+ ("/home/jmfurlott/work/booking-agreement-client/js/" (21801 41317 257839 963000) "constants/" ".gitignore" "actions/" "../" "./" "components/" "app.js" "dispatcher/" "stores/" "utils/")
+
+ ("/home/jmfurlott/work/booking-agreement-client/js/components/" (21803 51380 650540 744000) "BookingHandler.js" "../" "./" "Dashboard.js" "BookingAgreement/")
+
  ("/home/jmfurlott/work/booking-agreement-client/js/utils/" (21796 12234 196261 339000) "Helpers.js~" "../" "./" "BookingAPIUtils.js" "Helpers.js" "Logger.js")
-
- ("/home/jmfurlott/work/booking-agreement-client/js/components/" (21796 6833 936195 175000) "BookingHandler.js" "PaymentPolicies.js" "DepositPaymentPolicy.js" "Status.js" "SelectedSpace.js" "FinalPaymentPolicy.js" "../" "Notification.js~" "Venue.js" "LineItem.js" "LineItemGroup.js" "./" "Popup.js" "LineItemContainer.js" "EssentialDetails.js" "Dashboard.js~" "fields/" "BookingAgreement.js" "ContentBlocks.js" "Popup.js~" "Dashboard.js" "SpaceDetails.js")
-
- ("/home/jmfurlott/work/booking-agreement-client/js/" (21790 37099 642495 492000) "actions/" "app.js" "../" "./" "stores/" "dispatcher/" "constants/" "utils/" ".gitignore" "components/")
 
  ("/home/jmfurlott/work/pointcatcher-grails/grails-app/" (21774 3576 470632 950000) "i18n/" "../" "migrations/" "views/" "domain/" "./" "controllers/" "jobs/" "conf/" "services/" "utils/" "taglib/")
 
@@ -54,15 +69,7 @@
 
  ("/home/jmfurlott/work/pointcatcher-consumer/src/" (21779 2596 723440 857000) "server/" "shared/" "app.js" "../" "client/" "./")
 
- ("/home/jmfurlott/work/booking-agreement-client/" (21777 35647 338256 396000) "build/" "start.sh" "index.html" "node_modules/" "Dockerrun.aws.json" "js/" ".jshintrc" "nginx.conf" "../" "package.json" "webpack.config.js" "README.md" "Dockerfile" "./" "circle.yml" ".git/" "deploy.sh" "fonts/" ".dockerignore" "LICENSE" ".gitignore" "supervisor.conf" "css/")
-
  ("/home/jmfurlott/.emacs.d/vendor/" (21772 63338 119304 500000) "web-mode.el" "dockerfile-mode/" "../" "mingus/" "aj-compilation.el" "multi-eshell.el" "./" "js3.elc" "sos.el" "emacs-powerline/" "emms/" "js3.el")
-
- ("/home/jmfurlott/.emacs.d/" (21772 63561 979307 242000) "windata/" "dirtree/" "elpa/" "tree-mode/" "markdown-mode/" "../" "jslint-reporter/" "eshell/" "evil/" "url/" "smart-mode-line/" "vendor/" "neotree/" "org/" "./" "ido.last" "timelog" "init.el" "themes/" "ac-comphist.dat" "linum+/" "multi-term/" "ido.last~" "init.el~" "recentf")
-
- ("/home/jmfurlott/" (21772 63559 963307 218000) ".xsession-errors" "Pictures/" ".local/" ".fehbg" ".screenlayout/" ".xsession-errors.old" "Documents/" "emacs-src/" ".config/" ".profile" ".vim/" ".bash_logout" ".ssh/" "config/" ".gconf/" ".node-gyp/" ".pki/" ".zshrc~" ".zshrc.pre-oh-my-zsh" "Music/" "examples.desktop" ".bash_aliases" "ovim/" "Templates/" "../" ".zsh-update" ".i3/" "Public/" ".dbus/" ".dmrc" ".cache/" "Downloads/" ".pip/" "andromeda.jpg" "work/" "./" ".zcompdump-jmfurlott-mba-5.0.5" ".zcompdump" ".ICEauthority" ".gnome/" ".viminfo" ".emacs.d/" "Desktop/" ".weechat/" ".nvm/" ".mozilla/" ".Xauthority" ".gnupg/" ".bash_history" ".npm/" ".bashrc" ".zsh_history" "Videos/" ".oh-my-zsh/" ".zshrc" ".vimrc")
-
- ("/home/jmfurlott/work/" (21772 56648 739420 349000) "booking-agreement-client/" "../" "./" "pointcatcher-consumer/" "booking-agreement-api/")
 
  ("/Library/WebServer/Documents/beta.parisleaf.com/src/shared/" (21689 11514 0 0) "utils/" "theme.js" "styleguide/" "stores/" "services/" "routes.js" "Promise.js" "prepareForRun.js" "npm-debug.log" "init.js" "constants/" "components/" "actions/" "__tests__/" "../" "./")
 
