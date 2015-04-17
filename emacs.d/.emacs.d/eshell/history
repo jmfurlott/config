@@ -1,0 +1,128 @@
+ls
+ff _SearchResult.scss
+cd work/pointcatcher-consumer/
+ls
+cd scss
+ls
+ff main.scss
+ls
+cd components/
+ls
+ff _SearchResult.scss
+ff _Search.scss
+git stash
+git checkout master
+git pull
+ls
+cd ..
+ls
+cd ..
+ls
+cd src/server/
+ls
+cd routes/
+ls
+cd api/
+ls
+ff factual.js 
+c work/
+cd work/pointcatcher-consumer/
+ls
+cd src/server/
+ls
+cd routes/api/
+ff factual.js 
+ls
+ff users.js 
+ls
+ff session.js
+cp users.js session.js
+ff session.js 
+ls
+ff index.js 
+ls
+cd ..
+ls
+cat index.js 
+cd ..
+ls
+ff app.js 
+ls
+ls
+lsls
+s
+ls
+cd ..
+ls
+cd shared/
+ls
+clear
+ls
+cd components/
+ls
+cd ..
+ls
+cd services/ls
+cd services/
+ls
+ff SessionService.js
+ls
+clear
+ls
+cd work/
+ls
+cd pointcatcher-consumer/
+ls
+ls
+cd src
+ls
+cd shared/
+ls
+cd components/
+ls
+cd ..
+ls
+ls
+cd services/
+ls
+ff SessionService.js 
+ff FactualService.js 
+lsls
+cd ../actions/
+ls
+ff FactualActionCreators.js 
+ls
+ff SessionActions.js 
+ls
+cd work/
+ls
+cd pointcatcher-consumer/
+ls
+cd work/
+ls
+cd booking-agreement-client/
+ls
+cd js
+ls
+cd components/
+ls
+cd BookingAgreement/
+ls
+cd Activities/
+ls
+ff Activity.js
+ls
+clear
+cd work/
+ls
+cd pointcatcher-consumer/
+ls
+cd work/pointcatcher-consumer/
+ls
+clear
+ls
+ls
+clear
+ls
+clear
+ls
