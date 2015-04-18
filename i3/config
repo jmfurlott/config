@@ -103,7 +103,7 @@ bindsym $mod+3 workspace number 3 client
 bindsym $mod+4 workspace number 4 server
 bindsym $mod+5 workspace number 5 slack
 bindsym $mod+6 workspace number 6 irc
-bindsym $mod+7 workspace 7
+bindsym $mod+7 workspace number 7 music
 bindsym $mod+8 workspace 8
 bindsym $mod+9 workspace 9
 bindsym $mod+0 workspace 10
@@ -115,7 +115,7 @@ bindsym $mod+Shift+3 move container to workspace number 3 client
 bindsym $mod+Shift+4 move container to workspace number 4 server
 bindsym $mod+Shift+5 move container to workspace number 5 slack
 bindsym $mod+Shift+6 move container to workspace number 6 irc
-bindsym $mod+Shift+7 move container to workspace 7
+bindsym $mod+Shift+7 move container to workspace number 7 music
 bindsym $mod+Shift+8 move container to workspace 8
 bindsym $mod+Shift+9 move container to workspace 9
 bindsym $mod+Shift+0 move container to workspace 10
@@ -185,11 +185,16 @@ bar {
   }
 }
 
-exec --no-startup-id compton --config ~/.compton.conf -b
-exec --no-startup-id redshift-gtk
+#exec --no-startup-id compton 
 exec --no-startup-id feh --bg-scale ~/blood-moon-utah.jpg
-exec --no-startup-id blueman-applet 
 exec --no-startup-id nm-applet 
+exec --no-startup-id mopidy 
+
+# Disable track pad for 1 sec after typing
+exec --no-startup-id syndaemon -i 1 -K -d
+
+# swap control key
+exec --no-startup-id /usr/bin/setxkbmap -option "ctrl:swapcaps"
 
 #client.focused #99cc99 #99cc99 #000000 #2d2d2d
 client.focused #4d4d4d #4d4d4d #000000 #2d2d2d
@@ -209,16 +214,6 @@ bindsym XF86AudioMute exec /usr/bin/pactl set-sink-mute @DEFAULT_SINK@ toggle
 
 # show battery stats
 bindsym XF86Battery exec gnome-power-statistics
-
-
-
-# Startup programs
-exec --no-startup-id i3-msg 'workspace 1 emacs; exec emacs'
-exec --no-startup-id i3-msg 'workspace 3 client; exec gnome-terminal'
-exec --no-startup-id i3-msg 'workspace 3 client; exec gnome-terminal'
-exec --no-startup-id i3-msg 'workspace 4 server; exec gnome-terminal'
-exec --no-startup-id i3-msg 'workspace 6 irc; exec gnome-terminal'
-
 
 gaps inner 10
 gaps outer 5
