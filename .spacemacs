@@ -12,6 +12,8 @@
    ;; of a list then all discovered layers will be installed.
    dotspacemacs-configuration-layers
    '(
+     git
+     themes-megapack
      ;; --------------------------------------------------------
      ;; Example of useful layers you may want to use right away
      ;; Uncomment a layer name and press C-c C-c to install it
@@ -58,14 +60,14 @@ before layers configuration."
    ;; List of themes, the first of the list is loaded when spacemacs starts.
    ;; Press <SPC> T n to cycle to the next theme in the list (works great
    ;; with 2 themes variants, one dark and one light)
-   dotspacemacs-themes '(base16-eighties
-           zenburn)
+   dotspacemacs-themes '(sanityinc-tomorrow-eighties 
+                         zenburn)
    ;; If non nil the cursor color matches the state color.
    dotspacemacs-colorize-cursor-according-to-state t
    ;; Default font. `powerline-scale' allows to quickly tweak the mode-line
    ;; size to make separators look not too crappy.
-   dotspacemacs-default-font '("Proggy CleanTT Regular"
-                               :size 12
+   dotspacemacs-default-font '("Source Code Pro"
+                               :size 13
                                :weight normal
                                :width normal
                                :powerline-scale 1)
@@ -136,11 +138,12 @@ before layers configuration."
   "Configuration function.
  This function is called at the very end of Spacemacs initialization after
 layers configuration."
-  (setq powerline-default-separator 'nil)
+   (setq powerline-default-separator 'nil)
   ;; aliases
   (defalias 'ff 'find-file)
   (defalias 'ffow 'find-file-other-window)
 
+  
   ;; Indentation from
   ;; http://blog.binchen.org/posts/easy-indentation-setup-in-emacs-for-web-development.html
   (defun my-setup-indent (n)
@@ -171,6 +174,7 @@ layers configuration."
 
   ;; call indentation
   (my-personal-code-style)
+
 )
 
 ;; Do not write anything past this comment. This is where Emacs will
