@@ -14,6 +14,10 @@
    '(
      git
      themes-megapack
+     html
+     restclient
+     spotify
+     javascript
      ;; --------------------------------------------------------
      ;; Example of useful layers you may want to use right away
      ;; Uncomment a layer name and press C-c C-c to install it
@@ -22,8 +26,9 @@
      ;; better-defaults
      ;; (git :variables
      ;;      git-gutter-use-fringe t)
-     ;; markdown
-     ;; org
+     markdown
+     org
+     auto-completion
      ;; syntax-checking
      )
    ;; A list of packages and/or extensions that will not be install and loaded.
@@ -60,14 +65,13 @@ before layers configuration."
    ;; List of themes, the first of the list is loaded when spacemacs starts.
    ;; Press <SPC> T n to cycle to the next theme in the list (works great
    ;; with 2 themes variants, one dark and one light)
-   dotspacemacs-themes '(sanityinc-tomorrow-eighties 
-                         zenburn)
+   dotspacemacs-themes ' (zenburn)
    ;; If non nil the cursor color matches the state color.
    dotspacemacs-colorize-cursor-according-to-state t
    ;; Default font. `powerline-scale' allows to quickly tweak the mode-line
    ;; size to make separators look not too crappy.
-   dotspacemacs-default-font '("Source Code Pro"
-                               :size 13
+   dotspacemacs-default-font '("DejaVu Sans Mono"
+                               :size 21
                                :weight normal
                                :width normal
                                :powerline-scale 1)
@@ -132,7 +136,9 @@ before layers configuration."
    dotspacemacs-default-package-repository nil
    )
   ;; User initialization goes here
-  )
+  (add-to-list 'load-path "~/.emacs.d/private/twittering-mode")
+  (load "~/.emacs.d/private/react-mode/react.el")
+)
 
 (defun dotspacemacs/config ()
   "Configuration function.
@@ -142,7 +148,7 @@ layers configuration."
   ;; aliases
   (defalias 'ff 'find-file)
   (defalias 'ffow 'find-file-other-window)
-
+  (spacemacs/toggle-line-numbers) ;; enable line numbers
   
   ;; Indentation from
   ;; http://blog.binchen.org/posts/easy-indentation-setup-in-emacs-for-web-development.html
@@ -175,6 +181,7 @@ layers configuration."
   ;; call indentation
   (my-personal-code-style)
 
+  (require 'twittering-mode)
 )
 
 ;; Do not write anything past this comment. This is where Emacs will
