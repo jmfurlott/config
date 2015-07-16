@@ -16,20 +16,14 @@
      themes-megapack
      html
      restclient
-     spotify
      javascript
-     ;; --------------------------------------------------------
-     ;; Example of useful layers you may want to use right away
-     ;; Uncomment a layer name and press C-c C-c to install it
-     ;; --------------------------------------------------------
-     ;; auto-completion
-     ;; better-defaults
-     ;; (git :variables
-     ;;      git-gutter-use-fringe t)
+     (shell :variables shell-default-term-shell "/bin/zsh")
+     erc
+     restclient
+     chrome
      markdown
      org
      auto-completion
-     ;; syntax-checking
      )
    ;; A list of packages and/or extensions that will not be install and loaded.
    dotspacemacs-excluded-packages '()
@@ -71,7 +65,7 @@ before layers configuration."
    ;; Default font. `powerline-scale' allows to quickly tweak the mode-line
    ;; size to make separators look not too crappy.
    dotspacemacs-default-font '("DejaVu Sans Mono"
-                               :size 21
+                               :size 14
                                :weight normal
                                :width normal
                                :powerline-scale 1)
@@ -136,8 +130,8 @@ before layers configuration."
    dotspacemacs-default-package-repository nil
    )
   ;; User initialization goes here
-  (add-to-list 'load-path "~/.emacs.d/private/twittering-mode")
-  (load "~/.emacs.d/private/react-mode/react.el")
+;;  (add-to-list 'load-path "~/.emacs.d/private/twittering-mode")
+;;  (load "~/.emacs.d/private/react-mode/react.el")
 )
 
 (defun dotspacemacs/config ()
@@ -181,7 +175,7 @@ layers configuration."
   ;; call indentation
   (my-personal-code-style)
 
-  (require 'twittering-mode)
+;;  (require 'twittering-mode)
 )
 
 ;; Do not write anything past this comment. This is where Emacs will
