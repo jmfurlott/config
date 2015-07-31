@@ -130,8 +130,9 @@ before layers configuration."
    dotspacemacs-default-package-repository nil
    )
   ;; User initialization goes here
-;;  (add-to-list 'load-path "~/.emacs.d/private/twittering-mode")
-;;  (load "~/.emacs.d/private/react-mode/react.el")
+    (add-to-list 'load-path "~/.emacs.d/private/twittering-mode")
+    (add-to-list 'load-path "~/.emacs.d/private/android-mode")
+    (load "~/.emacs.d/private/react-mode/react.el")
 )
 
 (defun dotspacemacs/config ()
@@ -175,7 +176,23 @@ layers configuration."
   ;; call indentation
   (my-personal-code-style)
 
-;;  (require 'twittering-mode)
+  (global-set-key "\C-x\C-b" 'ido-switch-buffer)
+
+  (require 'twittering-mode)
+  (setq twittering-use-master-password t)
+
+  (require 'android-mode)
+
+  ;; For storing erc passwords
+  (load "~/.ercpass")
+  (require 'erc-services)
+  (erc-services-mode 1)
+
+  (setq erc-prompt-for-nickserv-password nil)
+  (setq erc-nickserv-passwords
+        `((freenode
+           (("jmfurlott" . ,freenode-pass)))
+          ))
 )
 
 ;; Do not write anything past this comment. This is where Emacs will
