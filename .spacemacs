@@ -64,7 +64,13 @@ before layers configuration."
    dotspacemacs-colorize-cursor-according-to-state t
    ;; Default font. `powerline-scale' allows to quickly tweak the mode-line
    ;; size to make separators look not too crappy.
-   dotspacemacs-default-font '("DejaVu Sans Mono"
+   ;;dotspacemacs-default-font '("DejaVu Sans Mono"
+   ;;                            :size 14
+   ;;                            :weight normal
+   ;;                            :width normal
+   ;;                            :powerline-scale 1)
+
+   dotspacemacs-default-font '("Menlo"
                                :size 14
                                :weight normal
                                :width normal
@@ -133,6 +139,7 @@ before layers configuration."
     (add-to-list 'load-path "~/.emacs.d/private/twittering-mode")
     (add-to-list 'load-path "~/.emacs.d/private/android-mode")
     (load "~/.emacs.d/private/react-mode/react.el")
+    (load "~/.emacs.d/private/hackernews.el/hackernews.el")
 )
 
 (defun dotspacemacs/config ()
@@ -143,6 +150,7 @@ layers configuration."
   ;; aliases
   (defalias 'ff 'find-file)
   (defalias 'ffow 'find-file-other-window)
+  (defalias 'l 'ls)
   (spacemacs/toggle-line-numbers) ;; enable line numbers
   
   ;; Indentation from
@@ -182,6 +190,7 @@ layers configuration."
   (setq twittering-use-master-password t)
 
   (require 'android-mode)
+  (setq android-mode-sdk-dir "/Users/jmfurlott/Library/Android/sdk")
 
   ;; For storing erc passwords
   (load "~/.ercpass")
@@ -193,6 +202,38 @@ layers configuration."
         `((freenode
            (("jmfurlott" . ,freenode-pass)))
           ))
+
+  (defmacro erc-autojoin (&rest args)
+    `(add-hook 'erc-after-connect
+               '(lambda (server nick)
+                  (cond
+                   ,@(mapcar (lambda (servers+channels)
+                               (let ((servers (car servers+channels))
+                                     (channels (cdr servers+channels)))
+                                 `((member erc-session-server ',servers)
+                                   (mapc 'erc-join-channel ',channels))))
+                             args)))))
+  (erc-autojoin
+    (("irc.freenode.net")
+     "#reactjs" "emacs" "android-dev"))
+
+  (add-hook 'js2-mode-hook    'subword-mode)
+  (add-hook 'web-mode-hook    'subword-mode)
+
+  ;; Function for easy json formatting
+  (defun json-format ()
+    (interactive)
+    (save-excursion
+      (shell-command-on-region (mark) (point) "python -m json.tool" (buffer-name) t)
+      )
+    )
+
+  ;; Fill column indicator at L80
+  (setq fci-rule-width 5)
+  (setq fci-rule-color "#8faf9f")
+  (add-hook 'js2-mode-hook 'fci-mode)
+  (add-hook 'web-mode-hook 'fci-mode)
+
 )
 
 ;; Do not write anything past this comment. This is where Emacs will
