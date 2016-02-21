@@ -1,5 +1,5 @@
 # Path to your oh-my-zsh installation.
-export ZSH=/home/jmfurlott/.oh-my-zsh
+export ZSH=/Users/jmfurlott/.oh-my-zsh
 
 # Set name of the theme to load.
 # Look in ~/.oh-my-zsh/themes/
@@ -9,6 +9,10 @@ ZSH_THEME="robbyrussell"
 
 # Uncomment the following line to use case-sensitive completion.
 # CASE_SENSITIVE="true"
+
+# Uncomment the following line to use hyphen-insensitive completion. Case
+# sensitive completion must be off. _ and - will be interchangeable.
+# HYPHEN_INSENSITIVE="true"
 
 # Uncomment the following line to disable bi-weekly auto-update checks.
 # DISABLE_AUTO_UPDATE="true"
@@ -45,25 +49,14 @@ ZSH_THEME="robbyrussell"
 # Custom plugins may be added to ~/.oh-my-zsh/custom/plugins/
 # Example format: plugins=(rails git textmate ruby lighthouse)
 # Add wisely, as too many plugins slow down shell startup.
-plugins=(git vi-mode)
+plugins=(git vi-mode npm)
 
 # User configuration
-
-
-export PATH="/usr/local/sbin:/usr/local/bin:/usr/sbin:/usr/bin:/sbin:/bin:/usr/games:/usr/local/games"
+if which pyenv > /dev/null; then eval "$(pyenv init -)"; fi
+export PATH="/usr/local/bin:/usr/bin:/bin:/usr/sbin:/sbin"
 # export MANPATH="/usr/local/man:$MANPATH"
 
-export TERM=xterm-256color
-alias vtop="vtop --theme wizard"
-alias sag="sudo apt-get"
-
 source $ZSH/oh-my-zsh.sh
-
-
-#CLASSPATH=$CLASSPATH:/usr/share/java/mysql.jar
-#
-#export CLASSPATH
-export CLASSPATH=$CLASSPATH:/usr/share/java/mysql-connector-java.jar
 
 # You may need to manually set your language environment
 # export LANG=en_US.UTF-8
@@ -89,8 +82,18 @@ export CLASSPATH=$CLASSPATH:/usr/share/java/mysql-connector-java.jar
 # Example aliases
 # alias zshconfig="mate ~/.zshrc"
 # alias ohmyzsh="mate ~/.oh-my-zsh"
-export NVM_DIR="/home/jmfurlott/.nvm"
+#
+
+export ANDROID_HOME=/usr/local/opt/android-sdk
+
+alias emacs=/usr/local/bin/emacs
+alias ns="npm start"
+alias nt="npm test"
+alias vim=nvim
+
+if which rbenv > /dev/null; then eval "$(rbenv init -)"; fi
+
+export NVM_DIR="/Users/jmfurlott/.nvm"
 [ -s "$NVM_DIR/nvm.sh" ] && . "$NVM_DIR/nvm.sh"  # This loads nvm
 
-#THIS MUST BE AT THE END OF THE FILE FOR GVM TO WORK!!!
-#[[ -s "/home/jmfurlott/.gvm/bin/gvm-init.sh" ]] && source "/home/jmfurlott/.gvm/bin/gvm-init.sh"
+test -e ${HOME}/.iterm2_shell_integration.zsh && source ${HOME}/.iterm2_shell_integration.zsh

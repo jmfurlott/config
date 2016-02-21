@@ -13,17 +13,21 @@
    dotspacemacs-configuration-layers
    '(
      git
-     themes-megapack
      html
-     restclient
      javascript
      (shell :variables shell-default-term-shell "/bin/zsh")
      erc
-     restclient
-     chrome
+     ;; restclient
+     ;; chrome
      markdown
      org
-     auto-completion
+     ;; auto-completion
+     ;; clojure
+     ;; colors
+     ruby-on-rails
+     ;; react
+     ;; latex
+     ;; elm
      )
    ;; A list of packages and/or extensions that will not be install and loaded.
    dotspacemacs-excluded-packages '()
@@ -59,22 +63,29 @@ before layers configuration."
    ;; List of themes, the first of the list is loaded when spacemacs starts.
    ;; Press <SPC> T n to cycle to the next theme in the list (works great
    ;; with 2 themes variants, one dark and one light)
-   dotspacemacs-themes ' (zenburn)
+   ;; dotspacemacs-themes ' (atom-one-dark zenburn base16-ocean-dark)
+   dotspacemacs-themes '(zenburn)
+   ;; dotspacemacs-themes '(zenburn)
    ;; If non nil the cursor color matches the state color.
    dotspacemacs-colorize-cursor-according-to-state t
    ;; Default font. `powerline-scale' allows to quickly tweak the mode-line
    ;; size to make separators look not too crappy.
-   ;;dotspacemacs-default-font '("DejaVu Sans Mono"
-   ;;                            :size 14
-   ;;                            :weight normal
-   ;;                            :width normal
-   ;;                            :powerline-scale 1)
+    dotspacemacs-default-font '("DejaVu Sans Mono"
+                                :size 14
+                                :weight normal
+                                :width normal
+                                :powerline-scale 1)
 
-   dotspacemacs-default-font '("Menlo"
-                               :size 14
-                               :weight normal
-                               :width normal
-                               :powerline-scale 1)
+   ;;   dotspacemacs-default-font '("Roboto Mono"
+   ;;                               :size 15
+   ;;                               :weight normal
+   ;;                               :width normal
+   ;;                               :powerline-scale 1)
+   ;; dotspacemacs-default-font '("Inconsolata"
+   ;;                              :size 16
+   ;;                              :weight normal
+   ;;                              :width normal
+   ;;                              :powerline-scale 1)
    ;; The leader key
    dotspacemacs-leader-key "SPC"
    ;; The leader key accessible in `emacs state' and `insert state'
@@ -124,7 +135,7 @@ before layers configuration."
    ;; point when it reaches the top or bottom of the screen.
    dotspacemacs-smooth-scrolling t
    ;; If non-nil smartparens-strict-mode will be enabled in programming modes.
-   dotspacemacs-smartparens-strict-mode nil
+   dotspacemacs-smartparens-strict-mode t
    ;; If non nil advises quit functions to keep server open when quitting.
    dotspacemacs-persistent-server nil
    ;; List of search tool executable names. Spacemacs uses the first installed
@@ -135,11 +146,11 @@ before layers configuration."
    ;; Not used for now.
    dotspacemacs-default-package-repository nil
    )
-  ;; User initialization goes here
-    (add-to-list 'load-path "~/.emacs.d/private/twittering-mode")
-    (add-to-list 'load-path "~/.emacs.d/private/android-mode")
-    (load "~/.emacs.d/private/react-mode/react.el")
-    (load "~/.emacs.d/private/hackernews.el/hackernews.el")
+   ;; User initialization goes here
+   ;; (add-to-list 'load-path "~/.emacs.d/private/twittering-mode")
+   ;; (add-to-list 'load-path "~/.emacs.d/private/android-mode")
+   ;; (load "~/.emacs.d/private/react-mode/react.el")
+   ;; (load "~/.emacs.d/private/hackernews.el/hackernews.el")
 )
 
 (defun dotspacemacs/config ()
@@ -151,7 +162,41 @@ layers configuration."
   (defalias 'ff 'find-file)
   (defalias 'ffow 'find-file-other-window)
   (defalias 'l 'ls)
-  (spacemacs/toggle-line-numbers) ;; enable line numbers
+  ;; (spacemacs/toggle-line-numbers) ;; enable line numbers
+  (setq-default dotspacemacs-line-numbers t)
+
+
+  ;; Fill column indicator at L80
+  (setq fci-rule-width 6)
+  (setq fci-rule-color "#8faf9f")
+  (add-hook 'js2-mode-hook 'fci-mode)
+  (add-hook 'web-mode-hook 'fci-mode)
+  (add-hook 'scss-mode-hook 'fci-mode)
+  (add-hook 'python-mode-hook 'fci-mode)
+  (add-hook 'javascript-mode-hook 'fci-mode)
+  (add-hook 'markdown-mode-hook 'fci-mode)
+  (add-hook 'js-mode-hook 'fci-mode)
+  (add-hook 'org-mode-hook 'fci-mode)
+  (add-hook 'ruby-mode-hook 'fci-mode)
+
+  ;; Indenting guide
+  (indent-guide-global-mode)
+
+  (setq-default
+   ;; js2-mode
+   js2-basic-offset 2
+   ;; web-mode
+   css-indent-offset 2
+   web-mode-markup-indent-offset 2
+   web-mode-css-indent-offset 2
+   web-mode-code-indent-offset 2
+   web-mode-attr-indent-offset 2)
+
+  (with-eval-after-load 'web-mode
+    (add-to-list 'web-mode-indentation-params '("lineup-args" . nil))
+    (add-to-list 'web-mode-indentation-params '("lineup-concats" . nil))
+    (add-to-list 'web-mode-indentation-params '("lineup-calls" . nil)))
+
   
   ;; Indentation from
   ;; http://blog.binchen.org/posts/easy-indentation-setup-in-emacs-for-web-development.html
@@ -186,12 +231,6 @@ layers configuration."
 
   (global-set-key "\C-x\C-b" 'ido-switch-buffer)
 
-  (require 'twittering-mode)
-  (setq twittering-use-master-password t)
-
-  (require 'android-mode)
-  (setq android-mode-sdk-dir "/Users/jmfurlott/Library/Android/sdk")
-
   ;; For storing erc passwords
   (load "~/.ercpass")
   (require 'erc-services)
@@ -215,8 +254,8 @@ layers configuration."
                              args)))))
   (erc-autojoin
     (("irc.freenode.net")
-     "#reactjs" "emacs" "android-dev"))
-
+     "reactjs" "emacs" "postgresql" "Node.js" "programming"))
+  (setq erc-hide-list '("JOIN" "PART" "QUIT"))
   (add-hook 'js2-mode-hook    'subword-mode)
   (add-hook 'web-mode-hook    'subword-mode)
 
@@ -228,13 +267,69 @@ layers configuration."
       )
     )
 
-  ;; Fill column indicator at L80
-  (setq fci-rule-width 5)
-  (setq fci-rule-color "#8faf9f")
-  (add-hook 'js2-mode-hook 'fci-mode)
-  (add-hook 'web-mode-hook 'fci-mode)
+  ;; Support for running git-grep in it's own buffer
+  (defcustom git-grep-switches "--extended-regexp -I -n --ignore-case --no-color"
+    "Switches to pass to `git grep'."
+    :type 'string)
+
+  (defcustom git-grep-default-work-tree (expand-file-name "~/work/adtrack")
+    "Top of your favorite git working tree.  \\[git-grep] will search from here if it cannot figure out where else to look."
+    :type 'directory
+    )
+
+  (when (require 'vc-git nil t)
+
+    ;; Uncomment this to try out the built-in-to-Emacs function.
+    ;;(defalias 'git-grep 'vc-git-grep)
+
+    (defun gg (command-args)
+      (interactive
+       (let ((root (vc-git-root default-directory)))
+         (when (not root)
+           (setq root git-grep-default-work-tree)
+           (message "git-grep: %s doesn't look like a git working tree; searching from %s instead" default-directory root))
+         (list (read-shell-command "Run git-grep (like this): "
+                                   (format (concat
+                                            "cd %s && "
+                                            "git grep %s -e %s")
+                                           root
+                                           git-grep-switches
+                                           (let ((thing (and
+
+                                          ; don't snarf stuff from the
+                                          ; buffer if we're not looking
+                                          ; at a file.  Perhaps we
+                                          ; should also check to see if
+                                          ; the file is part of a git
+                                          ; repo.
+                                                         buffer-file-name
+                                                         (thing-at-point 'symbol))))
+                                             (or (and thing (progn
+                                                              (set-text-properties 0 (length thing) nil thing)
+                                                              (shell-quote-argument (regexp-quote thing))))
+                                                 "")))
+                                   'git-grep-history))))
+      (let ((grep-use-null-device nil))
+        (grep command-args))))
 
 )
 
 ;; Do not write anything past this comment. This is where Emacs will
 ;; auto-generate custom variable definitions.
+(custom-set-variables
+ ;; custom-set-variables was added by Custom.
+ ;; If you edit it by hand, you could mess it up, so be careful.
+ ;; Your init file should contain only one such instance.
+ ;; If there is more than one, they won't work right.
+ '(js2-basic-offset 2)
+ '(neo-theme (quote ascii))
+ '(package-selected-packages
+   (quote
+    (smartparens projectile helm helm-core xterm-color ws-butler window-numbering web-mode web-beautify volatile-highlights vi-tilde-fringe toc-org tern tagedit spacemacs-theme spaceline smooth-scrolling smeargle slim-mode shell-pop scss-mode sass-mode rvm ruby-tools ruby-test-mode rubocop rspec-mode robe restart-emacs rbenv rainbow-delimiters projectile-rails popwin persp-mode pcre2el paradox page-break-lines orgit org-repo-todo org-present org-pomodoro org-plus-contrib org-bullets open-junk-file neotree multi-term move-text mmm-mode markdown-toc markdown-mode magit-gitflow lorem-ipsum linum-relative leuven-theme less-css-mode json-mode js2-refactor js2-mode js-doc jade-mode info+ indent-guide ido-vertical-mode hungry-delete htmlize hl-todo highlight-parentheses highlight-numbers highlight-indentation help-fns+ helm-themes helm-swoop helm-projectile helm-mode-manager helm-make helm-gitignore helm-flx helm-descbinds helm-css-scss helm-ag haml-mode google-translate golden-ratio gnuplot gitignore-mode gitconfig-mode gitattributes-mode git-timemachine git-messenger gh-md flx-ido fill-column-indicator feature-mode fancy-battery expand-region exec-path-from-shell evil-visualstar evil-tutor evil-surround evil-search-highlight-persist evil-numbers evil-nerd-commenter evil-mc evil-matchit evil-magit evil-lisp-state evil-jumper evil-indent-plus evil-iedit-state evil-exchange evil-escape evil-args evil-anzu eval-sexp-fu eshell-prompt-extras esh-help erc-yt erc-view-log erc-terminal-notifier erc-social-graph erc-image erc-hl-nicks emmet-mode define-word coffee-mode clean-aindent-mode chruby bundler buffer-move bracketed-paste auto-highlight-symbol aggressive-indent adaptive-wrap ace-window ace-link ace-jump-helm-line quelpa package-build use-package which-key bind-key bind-map evil zenburn-theme))))
+(custom-set-faces
+ ;; custom-set-faces was added by Custom.
+ ;; If you edit it by hand, you could mess it up, so be careful.
+ ;; Your init file should contain only one such instance.
+ ;; If there is more than one, they won't work right.
+ '(company-tooltip-common ((t (:inherit company-tooltip :weight bold :underline nil))))
+ '(company-tooltip-common-selection ((t (:inherit company-tooltip-selection :weight bold :underline nil)))))
