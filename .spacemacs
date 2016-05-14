@@ -166,6 +166,9 @@ layers configuration."
   ;; disable C-x C-c from closing all of emacs
   (global-set-key (kbd "C-x C-c") 'nil)
 
+  ;; Capital :W writes to file like :w
+  (evil-ex-define-cmd "W" 'evil-write)
+
   ;; Fill column indicator at L80
   (setq fci-rule-width 6)
   (setq fci-rule-color "#8faf9f")
