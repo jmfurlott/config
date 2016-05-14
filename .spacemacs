@@ -17,10 +17,12 @@
      javascript
      (shell :variables shell-default-term-shell "/bin/zsh")
      erc
-     ;; restclient
+     rcirc
+     restclient
      ;; chrome
      markdown
      org
+     deft
      ;; auto-completion
      ;; clojure
      ;; colors
@@ -70,22 +72,17 @@ before layers configuration."
    dotspacemacs-colorize-cursor-according-to-state t
    ;; Default font. `powerline-scale' allows to quickly tweak the mode-line
    ;; size to make separators look not too crappy.
-    dotspacemacs-default-font '("DejaVu Sans Mono"
-                                :size 14
-                                :weight normal
-                                :width normal
-                                :powerline-scale 1)
+   ;; dotspacemacs-default-font '("DejaVu Sans Mono"
+   ;;                             :size 14
+   ;;                             :weight Light
+   ;;                             :width normal
+   ;;                             :powerline-scale 1)
 
-   ;;   dotspacemacs-default-font '("Roboto Mono"
-   ;;                               :size 15
-   ;;                               :weight normal
-   ;;                               :width normal
-   ;;                               :powerline-scale 1)
-   ;; dotspacemacs-default-font '("Inconsolata"
-   ;;                              :size 16
-   ;;                              :weight normal
-   ;;                              :width normal
-   ;;                              :powerline-scale 1)
+   dotspacemacs-default-font '("Hack"
+                               :size 16
+                               :weight Light
+                               :width normal
+                               :powerline-scale 1)
    ;; The leader key
    dotspacemacs-leader-key "SPC"
    ;; The leader key accessible in `emacs state' and `insert state'
@@ -145,6 +142,7 @@ before layers configuration."
    ;; specified with an installed package.
    ;; Not used for now.
    dotspacemacs-default-package-repository nil
+   dotspacemacs-elpa-https nil
    )
    ;; User initialization goes here
    ;; (add-to-list 'load-path "~/.emacs.d/private/twittering-mode")
@@ -162,9 +160,11 @@ layers configuration."
   (defalias 'ff 'find-file)
   (defalias 'ffow 'find-file-other-window)
   (defalias 'l 'ls)
-  ;; (spacemacs/toggle-line-numbers) ;; enable line numbers
+  (spacemacs/toggle-line-numbers) ;; enable line numbers
   (setq-default dotspacemacs-line-numbers t)
 
+  ;; disable C-x C-c from closing all of emacs
+  (global-set-key (kbd "C-x C-c") 'nil)
 
   ;; Fill column indicator at L80
   (setq fci-rule-width 6)
@@ -197,7 +197,9 @@ layers configuration."
     (add-to-list 'web-mode-indentation-params '("lineup-concats" . nil))
     (add-to-list 'web-mode-indentation-params '("lineup-calls" . nil)))
 
-  
+  ;; ibuffer
+  (evil-set-initial-state 'ibuffer-mode 'normal)
+
   ;; Indentation from
   ;; http://blog.binchen.org/posts/easy-indentation-setup-in-emacs-for-web-development.html
   (defun my-setup-indent (n)
@@ -229,33 +231,37 @@ layers configuration."
   ;; call indentation
   (my-personal-code-style)
 
+  ;; Deft mode
+  (setq deft-extensions '("org" "txt" "tex"))
+  (setq deft-directory "~/icloud/notes")
+
   (global-set-key "\C-x\C-b" 'ido-switch-buffer)
 
   ;; For storing erc passwords
-  (load "~/.ercpass")
-  (require 'erc-services)
-  (erc-services-mode 1)
+  ;; (require 'erc-services)
+  ;; (erc-services-mode 1)
 
-  (setq erc-prompt-for-nickserv-password nil)
-  (setq erc-nickserv-passwords
-        `((freenode
-           (("jmfurlott" . ,freenode-pass)))
-          ))
+  ;; (setq erc-prompt-for-nickserv-password nil)
+  ;; (setq erc-nickserv-passwords
+  ;;       `((freenode
+  ;;          (("jmfurlott" . ,freenode-pass)))
+  ;;         ))
 
-  (defmacro erc-autojoin (&rest args)
-    `(add-hook 'erc-after-connect
-               '(lambda (server nick)
-                  (cond
-                   ,@(mapcar (lambda (servers+channels)
-                               (let ((servers (car servers+channels))
-                                     (channels (cdr servers+channels)))
-                                 `((member erc-session-server ',servers)
-                                   (mapc 'erc-join-channel ',channels))))
-                             args)))))
-  (erc-autojoin
-    (("irc.freenode.net")
-     "reactjs" "emacs" "postgresql" "Node.js" "programming"))
-  (setq erc-hide-list '("JOIN" "PART" "QUIT"))
+  ;; (defmacro erc-autojoin (&rest args)
+  ;;   `(add-hook 'erc-after-connect
+  ;;              '(lambda (server nick)
+  ;;                 (cond
+  ;;                  ,@(mapcar (lambda (servers+channels)
+  ;;                              (let ((servers (car servers+channels))
+  ;;                                    (channels (cdr servers+channels)))
+  ;;                                `((member erc-session-server ',servers)
+  ;;                                  (mapc 'erc-join-channel ',channels))))
+  ;;                            args)))))
+  ;; (erc-autojoin
+  ;;   (("irc.freenode.net")
+  ;;    "reactjs" "emacs" "postgresql" "Node.js" "programming"))
+  ;; (setq erc-hide-list '("JOIN" "PART" "QUIT"))
+
   (add-hook 'js2-mode-hook    'subword-mode)
   (add-hook 'web-mode-hook    'subword-mode)
 
@@ -263,7 +269,7 @@ layers configuration."
   (defun json-format ()
     (interactive)
     (save-excursion
-      (shell-command-on-region (mark) (point) "python -m json.tool" (buffer-name) t)
+      (shell-command-on-region (mark) (point) "underscore pretty" (buffer-name) t)
       )
     )
 
@@ -325,11 +331,10 @@ layers configuration."
  '(neo-theme (quote ascii))
  '(package-selected-packages
    (quote
-    (smartparens projectile helm helm-core xterm-color ws-butler window-numbering web-mode web-beautify volatile-highlights vi-tilde-fringe toc-org tern tagedit spacemacs-theme spaceline smooth-scrolling smeargle slim-mode shell-pop scss-mode sass-mode rvm ruby-tools ruby-test-mode rubocop rspec-mode robe restart-emacs rbenv rainbow-delimiters projectile-rails popwin persp-mode pcre2el paradox page-break-lines orgit org-repo-todo org-present org-pomodoro org-plus-contrib org-bullets open-junk-file neotree multi-term move-text mmm-mode markdown-toc markdown-mode magit-gitflow lorem-ipsum linum-relative leuven-theme less-css-mode json-mode js2-refactor js2-mode js-doc jade-mode info+ indent-guide ido-vertical-mode hungry-delete htmlize hl-todo highlight-parentheses highlight-numbers highlight-indentation help-fns+ helm-themes helm-swoop helm-projectile helm-mode-manager helm-make helm-gitignore helm-flx helm-descbinds helm-css-scss helm-ag haml-mode google-translate golden-ratio gnuplot gitignore-mode gitconfig-mode gitattributes-mode git-timemachine git-messenger gh-md flx-ido fill-column-indicator feature-mode fancy-battery expand-region exec-path-from-shell evil-visualstar evil-tutor evil-surround evil-search-highlight-persist evil-numbers evil-nerd-commenter evil-mc evil-matchit evil-magit evil-lisp-state evil-jumper evil-indent-plus evil-iedit-state evil-exchange evil-escape evil-args evil-anzu eval-sexp-fu eshell-prompt-extras esh-help erc-yt erc-view-log erc-terminal-notifier erc-social-graph erc-image erc-hl-nicks emmet-mode define-word coffee-mode clean-aindent-mode chruby bundler buffer-move bracketed-paste auto-highlight-symbol aggressive-indent adaptive-wrap ace-window ace-link ace-jump-helm-line quelpa package-build use-package which-key bind-key bind-map evil zenburn-theme))))
+    (rcirc-notify rcirc-color rake inflections f alert log4e gntp json-snatcher json-reformat parent-mode pkg-info epl request flx iedit highlight popup async anzu with-editor hydra spinner magit-popup git-commit restclient deft s inf-ruby multiple-cursors dash avy yasnippet magit powerline smartparens projectile helm helm-core xterm-color ws-butler window-numbering web-mode web-beautify volatile-highlights vi-tilde-fringe toc-org tern tagedit spacemacs-theme spaceline smooth-scrolling smeargle slim-mode shell-pop scss-mode sass-mode rvm ruby-tools ruby-test-mode rubocop rspec-mode robe restart-emacs rbenv rainbow-delimiters projectile-rails popwin persp-mode pcre2el paradox page-break-lines orgit org-repo-todo org-present org-pomodoro org-plus-contrib org-bullets open-junk-file neotree multi-term move-text mmm-mode markdown-toc markdown-mode magit-gitflow lorem-ipsum linum-relative leuven-theme less-css-mode json-mode js2-refactor js2-mode js-doc jade-mode info+ indent-guide ido-vertical-mode hungry-delete htmlize hl-todo highlight-parentheses highlight-numbers highlight-indentation help-fns+ helm-themes helm-swoop helm-projectile helm-mode-manager helm-make helm-gitignore helm-flx helm-descbinds helm-css-scss helm-ag haml-mode google-translate golden-ratio gnuplot gitignore-mode gitconfig-mode gitattributes-mode git-timemachine git-messenger gh-md flx-ido fill-column-indicator feature-mode fancy-battery expand-region exec-path-from-shell evil-visualstar evil-tutor evil-surround evil-search-highlight-persist evil-numbers evil-nerd-commenter evil-mc evil-matchit evil-magit evil-lisp-state evil-jumper evil-indent-plus evil-iedit-state evil-exchange evil-escape evil-args evil-anzu eval-sexp-fu eshell-prompt-extras esh-help erc-yt erc-view-log erc-terminal-notifier erc-social-graph erc-image erc-hl-nicks emmet-mode define-word coffee-mode clean-aindent-mode chruby bundler buffer-move bracketed-paste auto-highlight-symbol aggressive-indent adaptive-wrap ace-window ace-link ace-jump-helm-line quelpa package-build use-package which-key bind-key bind-map evil zenburn-theme))))
 (custom-set-faces
  ;; custom-set-faces was added by Custom.
  ;; If you edit it by hand, you could mess it up, so be careful.
  ;; Your init file should contain only one such instance.
  ;; If there is more than one, they won't work right.
- '(company-tooltip-common ((t (:inherit company-tooltip :weight bold :underline nil))))
- '(company-tooltip-common-selection ((t (:inherit company-tooltip-selection :weight bold :underline nil)))))
+ )
