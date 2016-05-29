@@ -168,6 +168,9 @@ layers configuration."
   (spacemacs/toggle-line-numbers) ;; enable line numbers
   (setq-default dotspacemacs-line-numbers t)
 
+  ;; Less coarse undo via evil.  More close to vim style
+  (setq evil-want-fine-undo t)
+
   ;; disable C-x C-c from closing all of emacs
   (global-set-key (kbd "C-x C-c") 'nil)
 
