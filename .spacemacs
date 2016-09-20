@@ -79,9 +79,13 @@ before layers configuration."
    ;; size to make separators look not too crappy.
    dotspacemacs-default-font '("DejaVu Sans Mono"
                                :size 14
-                               :weight Light
                                :width normal
                                :powerline-scale 1)
+   // dotspacemacs-default-font '("DejaVu Sans Mono"
+   //                             :size 14
+   //                             :weight Light
+   //                             :width normal
+   //                             :powerline-scale 1)
 
    ;; dotspacemacs-default-font '("SF Mono"
    ;;                             :size 16
