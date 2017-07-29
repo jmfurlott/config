@@ -12,8 +12,6 @@
    ;; of a list then all discovered layers will be installed.
    dotspacemacs-configuration-layers
    '(
-     nginx
-     csv
      (shell :variables shell-default-term-shell "/bin/zsh")
      deft
      git
@@ -24,13 +22,13 @@
      rcirc
      react
      restclient
-     ruby-on-rails
+     ;; ruby-on-rails
      themes-megapack
      sql
-     twitter
+     python
      (elfeed :variables rmh-elfeed-org-files (list "~/icloud/feeds.org"))
-     (auto-completion :variables
-                         auto-completion-enable-help-tooltip t)
+     ;; (auto-completion :variables
+     ;;                     auto-completion-enable-help-tooltip t)
      ;; auto-completion
      ;; clojure
      ;; colors
@@ -72,7 +70,7 @@ before layers configuration."
    ;; Press <SPC> T n to cycle to the next theme in the list (works great
    ;; with 2 themes variants, one dark and one light)
    ;; dotspacemacs-themes ' (atom-one-dark zenburn base16-ocean-dark)
-   dotspacemacs-themes '(hc-zenburn base16-oceanicnext-dark)
+   dotspacemacs-themes '(hc-zenburn base16-oceanicnext-dark tango-plus)
    ;; dotspacemacs-themes '(zenburn)
    ;; If non nil the cursor color matches the state color.
    dotspacemacs-colorize-cursor-according-to-state t
@@ -166,7 +164,7 @@ layers configuration."
   (defalias 'ff 'find-file)
   (defalias 'ffow 'find-file-other-window)
   (defalias 'l 'ls)
-  ;; (spacemacs/toggle-line-numbers) ;; enable line numbers
+  (spacemacs/toggle-line-numbers) ;; enable line numbers
   (setq-default dotspacemacs-line-numbers t)
 
   ;; Less coarse undo via evil.  More close to vim style
@@ -213,6 +211,9 @@ layers configuration."
 
   ;; ibuffer
   (evil-set-initial-state 'ibuffer-mode 'normal)
+
+  (setq tramp-copy-size-limit nil)
+
 
   ;; Indentation from
   ;; http://blog.binchen.org/posts/easy-indentation-setup-in-emacs-for-web-development.html
@@ -275,51 +276,75 @@ layers configuration."
   ;; (erc-autojoin
   ;;   (("irc.freenode.net")
   ;;    "reactjs" "emacs" "postgresql" "Node.js" "programming"))
-  (setq erc-hide-list '("JOIN" "PART" "QUIT"))
-
-  ;; now playing
-  (defun np ()
-  (do-applescript
-   "tell application \"iTunes\"
-           set currentTrack to the current track
-           set artist_name to the artist of currentTrack
-           set song_title to the name of currentTrack
-           return artist_name & \" - \" & song_title
-        end tell"))
-
-  ;; now playing next track
-  (defun npn ()
-    (do-applescript
-      "tell application \"iTunes\"
-	       next track
-       end tell")
-    )
+  ;; (setq erc-hide-list '("JOIN" "PART" "QUIT"))
 
   (add-hook 'js2-mode-hook    'subword-mode)
   (add-hook 'react-mode-hook    'subword-mode)
   (add-hook 'web-mode-hook    'subword-mode)
+  (add-hook 'css-mode-hook    'subword-mode)
+  (add-hook 'python-mode-hook    'subword-mode)
 
-  (setq sql-connection-alist
-        '(("localhost"
-           (sql-product 'postgres)
-           (sql-user "postgres")
-           (sql-password "password")
-           (sql-server "localhost")
-           (sql-database "ravti-api"))))
+  ;; Function for easy json formatting
+  (defun json-format ()
+    (interactiv
+e)
+    (save-excursion
+      (shell-command-on-region (mark) (point) "underscore pretty" (buffer-name) t)
+      )
+    )
+
+  ;; Support for running git-grep in it's own buffer
+  (defcustom git-grep-switches "--extended-regexp -I -n --ignore-case --no-color"
+    "Switches to pass to `git grep'."
+    :type 'string)
+
+  (defcustom git-grep-default-work-tree (expand-file-name "~/work/adtrack")
+    "Top of your favorite git working tree.  \\[git-grep] will search from here if it cannot figure out where else to look."
+    :type 'directory
+    )
+
+  (when (require 'vc-git nil t)
+
+    ;; Uncomment this to try out the built-in-to-Emacs function.
+    ;;(defalias 'git-grep 'vc-git-grep)
+
+    (defun gg (command-args)
+      (interactive
+       (let ((root (vc-git-root default-directory)))
+         (when (not root)
+           (setq root git-grep-default-work-tree)
+           (message "git-grep: %s doesn't look like a git working tree; searching from %s instead" default-directory root))
+         (list (read-shell-command "Run git-grep (like this): "
+                                   (format (concat
+                                            "cd %s && "
+                                            "git grep %s -e %s")
+                                           root
+                                           git-grep-switches
+                                           (let ((thing (and
+
+                                          ; don't snarf stuff from the
+                                          ; buffer if we're not looking
+                                          ; at a file.  Perhaps we
+                                          ; should also check to see if
+                                          ; the file is part of a git
+                                          ; repo.
+                                                         buffer-file-name
+                                                         (thing-at-point 'symbol))))
+                                             (or (and thing (progn
+                                                              (set-text-properties 0 (length thing) nil thing)
+                                                              (shell-quote-argument (regexp-quote thing))))
+                                                 "")))
+                                   'git-grep-history))))
+      (let ((grep-use-null-device nil))
+        (grep command-args))))
+
 )
 (custom-set-variables
  ;; custom-set-variables was added by Custom.
  ;; If you edit it by hand, you could mess it up, so be careful.
  ;; Your init file should contain only one such instance.
  ;; If there is more than one, they won't work right.
- '(org-agenda-files (quote ("~/icloud/notes/2017_04_27-BaOS.org")))
  '(package-selected-packages
    (quote
-    (twittering-mode winum solarized-theme restclient-helm ob-restclient madhat2r-theme fuzzy company-restclient know-your-http-well docker nginx-mode csv-mode autothemer pug-mode minitest hide-comnt uuidgen org-projectile org-download ob-http livid-mode skewer-mode link-hint git-link eyebrowse evil-visual-mark-mode evil-unimpaired evil-ediff goto-chg undo-tree eshell-z org dumb-jump diminish darkokai-theme column-enforce-mode zonokai-theme zenburn-theme zen-and-art-theme xterm-color ws-butler window-numbering web-mode web-beautify volatile-highlights vi-tilde-fringe underwater-theme ujelly-theme twilight-theme twilight-bright-theme twilight-anti-bright-theme tronesque-theme toxi-theme toc-org tao-theme tangotango-theme tango-plus-theme tango-2-theme tagedit sunny-day-theme sublime-themes subatomic256-theme subatomic-theme stekene-theme sql-indent spacemacs-theme spaceline spacegray-theme soothe-theme soft-stone-theme soft-morning-theme soft-charcoal-theme smyx-theme smooth-scrolling smeargle slim-mode shell-pop seti-theme scss-mode sass-mode rvm ruby-tools ruby-test-mode rubocop rspec-mode robe reverse-theme restclient restart-emacs rcirc-notify rcirc-color rbenv rainbow-delimiters railscasts-theme purple-haze-theme projectile-rails rake inflections f professional-theme planet-theme phoenix-dark-pink-theme phoenix-dark-mono-theme persp-mode pcre2el pastels-on-dark-theme paradox hydra spinner page-break-lines orgit organic-green-theme org-repo-todo org-present org-pomodoro alert log4e gntp org-plus-contrib org-bullets open-junk-file omtose-phellack-theme oldlace-theme occidental-theme obsidian-theme noctilux-theme niflheim-theme neotree naquadah-theme mustang-theme multi-term move-text monokai-theme monochrome-theme molokai-theme moe-theme mmm-mode minimal-theme material-theme markdown-toc markdown-mode majapahit-theme magit-gitflow lush-theme lorem-ipsum linum-relative light-soap-theme leuven-theme less-css-mode json-mode json-snatcher json-reformat js2-refactor multiple-cursors js2-mode js-doc jbeans-theme jazz-theme jade-mode ir-black-theme inkpot-theme info+ indent-guide ido-vertical-mode hungry-delete htmlize hl-todo highlight-parentheses highlight-numbers parent-mode highlight-indentation heroku-theme hemisu-theme help-fns+ helm-themes helm-swoop helm-projectile helm-mode-manager helm-make projectile pkg-info epl helm-gitignore request helm-flx helm-descbinds helm-css-scss helm-company helm-c-yasnippet helm-ag haml-mode gruvbox-theme gruber-darker-theme grandshell-theme gotham-theme google-translate golden-ratio gnuplot gitignore-mode gitconfig-mode gitattributes-mode git-timemachine git-messenger gh-md gandalf-theme flx-ido flx flatui-theme flatland-theme firebelly-theme fill-column-indicator feature-mode farmhouse-theme fancy-battery expand-region exec-path-from-shell evil-visualstar evil-tutor evil-surround evil-search-highlight-persist evil-numbers evil-nerd-commenter evil-mc evil-matchit evil-magit magit magit-popup git-commit with-editor evil-lisp-state smartparens evil-indent-plus evil-iedit-state iedit evil-exchange evil-escape evil-args evil-anzu anzu eval-sexp-fu highlight espresso-theme eshell-prompt-extras esh-help emmet-mode elfeed-web simple-httpd elfeed-org elfeed-goodies ace-jump-mode noflet powerline popwin elfeed dracula-theme django-theme deft define-word darktooth-theme darkmine-theme darkburn-theme dakrone-theme cyberpunk-theme company-web web-completion-data company-tern s dash-functional tern dash company-statistics company-quickhelp pos-tip company colorsarenice-theme color-theme-sanityinc-tomorrow color-theme-sanityinc-solarized coffee-mode clues-theme clean-aindent-mode chruby cherry-blossom-theme busybee-theme bundler inf-ruby buffer-move bubbleberry-theme bracketed-paste birds-of-paradise-plus-theme badwolf-theme auto-yasnippet yasnippet auto-highlight-symbol apropospriate-theme anti-zenburn-theme ample-zen-theme ample-theme alect-themes aggressive-indent afternoon-theme adaptive-wrap ace-window ace-link ace-jump-helm-line helm avy helm-core async ac-ispell auto-complete popup quelpa package-build use-package which-key bind-key bind-map evil hc-zenburn-theme)))
+    (yapfify pyvenv pytest pyenv-mode py-isort pip-requirements live-py-mode hy-mode helm-pydoc cython-mode company-anaconda anaconda-mode pythonic winum solarized-theme restclient-helm ob-restclient madhat2r-theme fuzzy company-restclient know-your-http-well autothemer pug-mode minitest hide-comnt uuidgen org-projectile org-download ob-http livid-mode skewer-mode link-hint git-link eyebrowse evil-visual-mark-mode evil-unimpaired evil-ediff goto-chg undo-tree eshell-z org dumb-jump diminish darkokai-theme column-enforce-mode zonokai-theme zenburn-theme zen-and-art-theme xterm-color ws-butler window-numbering web-mode web-beautify volatile-highlights vi-tilde-fringe underwater-theme ujelly-theme twilight-theme twilight-bright-theme twilight-anti-bright-theme tronesque-theme toxi-theme toc-org tao-theme tangotango-theme tango-plus-theme tango-2-theme tagedit sunny-day-theme sublime-themes subatomic256-theme subatomic-theme stekene-theme sql-indent spacemacs-theme spaceline spacegray-theme soothe-theme soft-stone-theme soft-morning-theme soft-charcoal-theme smyx-theme smooth-scrolling smeargle slim-mode shell-pop seti-theme scss-mode sass-mode rvm ruby-tools ruby-test-mode rubocop rspec-mode robe reverse-theme restclient restart-emacs rcirc-notify rcirc-color rbenv rainbow-delimiters railscasts-theme purple-haze-theme projectile-rails rake inflections f professional-theme planet-theme phoenix-dark-pink-theme phoenix-dark-mono-theme persp-mode pcre2el pastels-on-dark-theme paradox hydra spinner page-break-lines orgit organic-green-theme org-repo-todo org-present org-pomodoro alert log4e gntp org-plus-contrib org-bullets open-junk-file omtose-phellack-theme oldlace-theme occidental-theme obsidian-theme noctilux-theme niflheim-theme neotree naquadah-theme mustang-theme multi-term move-text monokai-theme monochrome-theme molokai-theme moe-theme mmm-mode minimal-theme material-theme markdown-toc markdown-mode majapahit-theme magit-gitflow lush-theme lorem-ipsum linum-relative light-soap-theme leuven-theme less-css-mode json-mode json-snatcher json-reformat js2-refactor multiple-cursors js2-mode js-doc jbeans-theme jazz-theme jade-mode ir-black-theme inkpot-theme info+ indent-guide ido-vertical-mode hungry-delete htmlize hl-todo highlight-parentheses highlight-numbers parent-mode highlight-indentation heroku-theme hemisu-theme help-fns+ helm-themes helm-swoop helm-projectile helm-mode-manager helm-make projectile pkg-info epl helm-gitignore request helm-flx helm-descbinds helm-css-scss helm-company helm-c-yasnippet helm-ag haml-mode gruvbox-theme gruber-darker-theme grandshell-theme gotham-theme google-translate golden-ratio gnuplot gitignore-mode gitconfig-mode gitattributes-mode git-timemachine git-messenger gh-md gandalf-theme flx-ido flx flatui-theme flatland-theme firebelly-theme fill-column-indicator feature-mode farmhouse-theme fancy-battery expand-region exec-path-from-shell evil-visualstar evil-tutor evil-surround evil-search-highlight-persist evil-numbers evil-nerd-commenter evil-mc evil-matchit evil-magit magit magit-popup git-commit with-editor evil-lisp-state smartparens evil-indent-plus evil-iedit-state iedit evil-exchange evil-escape evil-args evil-anzu anzu eval-sexp-fu highlight espresso-theme eshell-prompt-extras esh-help emmet-mode elfeed-web simple-httpd elfeed-org elfeed-goodies ace-jump-mode noflet powerline popwin elfeed dracula-theme django-theme deft define-word darktooth-theme darkmine-theme darkburn-theme dakrone-theme cyberpunk-theme company-web web-completion-data company-tern s dash-functional tern dash company-statistics company-quickhelp pos-tip company colorsarenice-theme color-theme-sanityinc-tomorrow color-theme-sanityinc-solarized coffee-mode clues-theme clean-aindent-mode chruby cherry-blossom-theme busybee-theme bundler inf-ruby buffer-move bubbleberry-theme bracketed-paste birds-of-paradise-plus-theme badwolf-theme auto-yasnippet yasnippet auto-highlight-symbol apropospriate-theme anti-zenburn-theme ample-zen-theme ample-theme alect-themes aggressive-indent afternoon-theme adaptive-wrap ace-window ace-link ace-jump-helm-line helm avy helm-core async ac-ispell auto-complete popup quelpa package-build use-package which-key bind-key bind-map evil hc-zenburn-theme)))
  '(projectile-use-git-grep t))
-(custom-set-faces
- ;; custom-set-faces was added by Custom.
- ;; If you edit it by hand, you could mess it up, so be careful.
- ;; Your init file should contain only one such instance.
- ;; If there is more than one, they won't work right.
- '(default ((t (:foreground "#DCDCCC" :background "#313131")))))
