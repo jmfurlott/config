@@ -59,7 +59,6 @@ values."
      themes-megapack
      (shell :variables shell-default-term-shell "/bin/zsh"
             shell-default-shell 'eshell)
-     (syntax-checking :variables flycheck-disabled-checkers '(ruby-rubocop emacs-lisp-checkdoc))
      ranger
      (elfeed :variables
              elfeed-feeds '("http://planet.emacsen.org/atom.xml"
@@ -127,7 +126,7 @@ values."
    ;; directory. A string value must be a path to an image format supported
    ;; by your Emacs build.
    ;; If the value is nil then no banner is displayed. (default 'official)
-   dotspacemacs-startup-banner 'random
+   dotspacemacs-startup-banner 'official
    ;; List of items to show in the startup buffer. If nil it is disabled.
    ;; Possible values are: `recents' `bookmarks' `projects'.
    ;; (default '(recents projects))
@@ -216,15 +215,15 @@ values."
    ;; If non nil then `ido' replaces `helm' for some commands. For now only
    ;; `find-files' (SPC f f), `find-spacemacs-file' (SPC f e s), and
    ;; `find-contrib-file' (SPC f e c) are replaced. (default nil)
-   dotspacemacs-use-ido nil
+   ;; dotspacemacs-use-ido nil
    ;; If non nil, `helm' will try to minimize the space it uses. (default nil)
-   dotspacemacs-helm-resize nil
+   ;; dotspacemacs-helm-resize nil
    ;; if non nil, the helm header is hidden when there is only one source.
    ;; (default nil)
-   dotspacemacs-helm-no-header nil
+   ;; dotspacemacs-helm-no-header nil
    ;; define the position to display `helm', options are `bottom', `top',
    ;; `left', or `right'. (default 'bottom)
-   dotspacemacs-helm-position 'bottom
+   ;; dotspacemacs-helm-position 'bottom
    ;; If non nil the paste micro-state is enabled. When enabled pressing `p`
    ;; several times cycle between the kill ring content. (default nil)
    ;; If non-nil the paste micro-state is enabled. When enabled pressing `p`
@@ -355,7 +354,6 @@ layers configuration. You are free to put any user code."
   (setq-default
    js2-mode-show-parse-errors nil
    js2-mode-show-strict-warnings nil
-   magit-save-repository-buffers 'dontask
    ns-right-option-modifier nil
    explicit-shell-file-name "/bin/bash"
    evil-ex-search-highlight-all nil)
@@ -411,6 +409,23 @@ layers configuration. You are free to put any user code."
   (add-hook 'css-mode-hook    'subword-mode)
   (add-hook 'python-mode-hook    'subword-mode)
 
+  (defun eslint-fix-file ()
+    (interactive)
+    (message "eslint --fixing the file" (buffer-file-name))
+    (shell-command (concat "eslint --fix " (buffer-file-name))))
+
+  (defun eslint-fix-file-and-revert ()
+    (interactive)
+    (eslint-fix-file)
+    (revert-buffer t t))
+
+  (add-hook 'rjsx-mode-hook
+            (lambda ()
+              (add-hook 'after-save-hook #'eslint-fix-file-and-revert)))
+
+  (add-hook 'js2-mode-hook
+            (lambda ()
+              (add-hook 'after-save-hook #'eslint-fix-file-and-revert)))
 
   ;; asok
   ;; https://github.com/asok/dot-files/blob/master/.spacemacs
@@ -436,8 +451,6 @@ layers configuration. You are free to put any user code."
     (add-hook 'shell-pop-in-after-hook #'asok/shell-pop-emacs-state-maybe))
 
 
-  (fullframe magit-status magit-mode-quit-window)
-  (fullframe magit-log magit-mode-quit-window)
   (fullframe wttrin wttrin-exit)
 
   (add-hook 'eval-expression-minibuffer-setup-hook #'eldoc-mode)
@@ -448,8 +461,6 @@ layers configuration. You are free to put any user code."
   ;;   (string-match-p ".*^import React" (buffer-string)))
 
   (add-to-list 'magic-mode-alist '(".*\n?import React" . rjsx-mode))
-
-  (add-hook 'dired-mode-hook #'hl-line-mode)
 
   (global-vi-tilde-fringe-mode -1)
 
@@ -545,9 +556,7 @@ This function is called at the very end of Spacemacs initialization."
  ;; If you edit it by hand, you could mess it up, so be careful.
  ;; Your init file should contain only one such instance.
  ;; If there is more than one, they won't work right.
- '(package-selected-packages
-   (quote
-    (yapfify pyvenv pytest pyenv-mode py-isort pip-requirements live-py-mode hy-mode helm-pydoc cython-mode company-anaconda anaconda-mode pythonic which-key web-mode use-package ujelly-theme solarized-theme persp-mode org-projectile org-category-capture link-hint jbeans-theme info+ highlight-parentheses highlight-numbers gruvbox-theme gotham-theme fill-column-indicator evil-nerd-commenter esh-help dumb-jump color-theme-sanityinc-tomorrow apropospriate-theme alect-themes ace-link avy elfeed iedit evil projectile helm helm-core yasnippet multiple-cursors markdown-mode alert org-plus-contrib magit magit-popup git-commit with-editor async hydra js2-mode dash s zonokai-theme zenburn-theme zen-and-art-theme wttrin ws-butler winum web-beautify volatile-highlights vi-tilde-fringe uuidgen undo-tree underwater-theme twilight-theme twilight-bright-theme twilight-anti-bright-theme tronesque-theme tramp-term toxi-theme toc-org tao-theme tangotango-theme tango-plus-theme tango-2-theme tagedit sunny-day-theme sublime-themes subatomic256-theme subatomic-theme sql-indent spaceline spacegray-theme soothe-theme soft-stone-theme soft-morning-theme soft-charcoal-theme smyx-theme smeargle slim-mode shell-pop seti-theme scss-mode sass-mode ruby-hash-syntax rjsx-mode reverse-theme restclient restart-emacs ranger rainbow-delimiters railscasts-theme purple-haze-theme pug-mode professional-theme planet-theme phoenix-dark-pink-theme phoenix-dark-mono-theme pcre2el pastels-on-dark-theme parent-mode paradox orgit organic-green-theme org-present org-pomodoro org-download org-bullets open-junk-file omtose-phellack-theme oldlace-theme occidental-theme obsidian-theme nubox nodejs-repl noctilux-theme niflheim-theme nginx-mode neotree naquadah-theme mustang-theme multi-term move-text monokai-theme monochrome-theme molokai-theme moe-theme mmm-mode minimal-theme material-theme markdown-toc majapahit-theme magit-gitflow madhat2r-theme macrostep lush-theme lorem-ipsum log4e livid-mode linum-relative light-soap-theme less-css-mode json-mode js2-refactor js-doc jazz-theme ir-black-theme inkpot-theme inf-ruby indent-guide hungry-delete htmlize hl-todo highlight-indentation hide-comnt heroku-theme hemisu-theme help-fns+ helm-themes helm-swoop helm-projectile helm-mode-manager helm-make helm-gitignore helm-flx helm-descbinds helm-css-scss helm-company helm-c-yasnippet helm-ag hc-zenburn-theme gruber-darker-theme grandshell-theme goto-chg google-translate golden-ratio gnuplot gntp gitconfig-mode gitattributes-mode git-timemachine git-messenger git-link gh-md gandalf-theme fuzzy fullframe flycheck-pos-tip flx-ido flatui-theme flatland-theme firebelly-theme farmhouse-theme fancy-battery eyebrowse expand-region exec-path-from-shell evil-visualstar evil-visual-mark-mode evil-unimpaired evil-tutor evil-surround evil-search-highlight-persist evil-numbers evil-mc evil-matchit evil-magit evil-lisp-state evil-indent-plus evil-iedit-state evil-exchange evil-escape evil-ediff evil-args evil-anzu espresso-theme eshell-z eshell-prompt-extras emmet-mode elisp-slime-nav elfeed-web elfeed-org elfeed-goodies dracula-theme django-theme diminish deft define-word darktooth-theme darkokai-theme darkmine-theme darkburn-theme dakrone-theme cyberpunk-theme csv-mode counsel-dash company-web company-tern company-statistics column-enforce-mode color-theme-sanityinc-solarized coffee-mode clues-theme clojure-snippets clj-refactor clean-aindent-mode cider-eval-sexp-fu cherry-blossom-theme busybee-theme bubbleberry-theme birds-of-paradise-plus-theme bind-key badwolf-theme auto-yasnippet auto-highlight-symbol auto-compile anti-zenburn-theme ample-zen-theme ample-theme aggressive-indent afternoon-theme adaptive-wrap ace-window ace-jump-helm-line ac-ispell))))
+)
 (custom-set-faces
  ;; custom-set-faces was added by Custom.
  ;; If you edit it by hand, you could mess it up, so be careful.
