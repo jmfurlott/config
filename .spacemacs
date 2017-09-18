@@ -412,7 +412,7 @@ layers configuration. You are free to put any user code."
   (defun eslint-fix-file ()
     (interactive)
     (message "eslint --fixing the file" (buffer-file-name))
-    (shell-command (concat "eslint --fix " (buffer-file-name))))
+    (shell-command (concat "`npm bin`/eslint --fix " (buffer-file-name))))
 
   (defun eslint-fix-file-and-revert ()
     (interactive)
@@ -527,7 +527,7 @@ Interactively also sends a terminating newline."
   ;; (require 'gotham-theme)
   ;; (custom-theme-set-faces 'gotham '(js2-object-property ((t (:inherit 'font-lock-type-face)))))
 
-  ;; (flycheck-add-mode 'rjsx-mode)
+  (flycheck-add-mode 'rjsx-mode)
 
   ;; (defadvice find-file (before make-directory-maybe (filename &optional wildcards) activate)
   ;;   "Create parent directory if not exists while visiting file."
@@ -556,7 +556,10 @@ This function is called at the very end of Spacemacs initialization."
  ;; If you edit it by hand, you could mess it up, so be careful.
  ;; Your init file should contain only one such instance.
  ;; If there is more than one, they won't work right.
-)
+ '(package-selected-packages
+   (quote
+    (pug-mode persp-mode move-text moe-theme live-py-mode hy-mode gruvbox-theme evil-surround evil-escape eshell-prompt-extras dumb-jump cython-mode color-theme-sanityinc-tomorrow inflections cider counsel swiper ivy helm-dash elfeed iedit smartparens goto-chg helm helm-core multiple-cursors projectile org-plus-contrib magit magit-popup git-commit async zonokai-theme zenburn-theme zen-and-art-theme yapfify wttrin ws-butler with-editor winum which-key web-mode web-beautify volatile-highlights vi-tilde-fringe uuidgen use-package underwater-theme ujelly-theme twilight-theme twilight-bright-theme twilight-anti-bright-theme tronesque-theme tramp-term toxi-theme toc-org tao-theme tangotango-theme tango-plus-theme tango-2-theme tagedit sunny-day-theme sublime-themes subatomic256-theme subatomic-theme sql-indent spaceline spacegray-theme soothe-theme solarized-theme soft-stone-theme soft-morning-theme soft-charcoal-theme smyx-theme smeargle slim-mode shell-pop seti-theme scss-mode sass-mode ruby-hash-syntax rjsx-mode reverse-theme restclient restart-emacs ranger rainbow-delimiters railscasts-theme queue pyvenv pytest pyenv-mode py-isort purple-haze-theme professional-theme planet-theme pkg-info pip-requirements phoenix-dark-pink-theme phoenix-dark-mono-theme pcre2el pastels-on-dark-theme paradox orgit organic-green-theme org-projectile org-present org-pomodoro org-download org-bullets open-junk-file omtose-phellack-theme oldlace-theme occidental-theme obsidian-theme nubox nodejs-repl noctilux-theme niflheim-theme nginx-mode neotree naquadah-theme mustang-theme multi-term monokai-theme monochrome-theme molokai-theme mmm-mode minimal-theme material-theme markdown-toc majapahit-theme magit-gitflow madhat2r-theme macrostep lush-theme lorem-ipsum livid-mode linum-relative link-hint light-soap-theme less-css-mode json-mode js2-refactor js-doc jbeans-theme jazz-theme ir-black-theme inkpot-theme info+ inf-ruby indent-guide hungry-delete htmlize hl-todo highlight-parentheses highlight-numbers highlight-indentation hide-comnt heroku-theme hemisu-theme help-fns+ helm-themes helm-swoop helm-pydoc helm-projectile helm-mode-manager helm-make helm-gitignore helm-flx helm-descbinds helm-css-scss helm-company helm-c-yasnippet helm-ag hc-zenburn-theme gruber-darker-theme grandshell-theme gotham-theme google-translate golden-ratio gnuplot gitconfig-mode gitattributes-mode git-timemachine git-messenger git-link gh-md gandalf-theme fuzzy fullframe flx-ido flatui-theme flatland-theme firebelly-theme fill-column-indicator farmhouse-theme fancy-battery eyebrowse expand-region exec-path-from-shell evil-visualstar evil-visual-mark-mode evil-unimpaired evil-tutor evil-search-highlight-persist evil-numbers evil-nerd-commenter evil-mc evil-matchit evil-magit evil-lisp-state evil-indent-plus evil-iedit-state evil-exchange evil-ediff evil-args evil-anzu espresso-theme eshell-z esh-help emmet-mode elisp-slime-nav elfeed-web elfeed-org elfeed-goodies dracula-theme django-theme deft define-word darktooth-theme darkokai-theme darkmine-theme darkburn-theme dakrone-theme cyberpunk-theme csv-mode counsel-dash company-web company-tern company-statistics company-anaconda column-enforce-mode color-theme-sanityinc-solarized coffee-mode clues-theme clojure-snippets clj-refactor clean-aindent-mode cider-eval-sexp-fu cherry-blossom-theme busybee-theme bubbleberry-theme birds-of-paradise-plus-theme badwolf-theme auto-yasnippet auto-highlight-symbol auto-compile apropospriate-theme anti-zenburn-theme ample-zen-theme ample-theme alect-themes aggressive-indent afternoon-theme adaptive-wrap ace-window ace-link ace-jump-helm-line ac-ispell)))
+ '(projectile-use-git-grep t))
 (custom-set-faces
  ;; custom-set-faces was added by Custom.
  ;; If you edit it by hand, you could mess it up, so be careful.
