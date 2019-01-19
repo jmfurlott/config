@@ -89,14 +89,16 @@ alias nf="npm run flow"
 
 export NVM_DIR="/Users/jmfurlott/.nvm"
 [ -s "$NVM_DIR/nvm.sh" ] && . "$NVM_DIR/nvm.sh"  # This loads nvm
-export PATH="$HOME/.rbenv/bin:$PATH"
-eval "$(rbenv init -)"
 # eval "$(docker-machine env default)"
 [ -s "$NVM_DIR/bash_completion" ] && \. "$NVM_DIR/bash_completion"  # This loads nvm bash_completion
 
+eval "$(rbenv init -)"
+# export PATH="$HOME/.rbenv/bin:$PATH"
+export RBENV_ROOT="$HOME/.rbenv"
 export PYENV_ROOT="$HOME/.pyenv"
-export PATH="$PYENV_ROOT/bin:/usr/local/bin:/usr/bin:/bin:/usr/sbin:/sbin"
-
+export PATH="$PYENV_ROOT/bin:/usr/local/bin:/usr/bin:/bin:/usr/sbin:/sbin:$RBENV_ROOT/shims"
+# /Applications/Sketch.app/Contents/Resources/sketchtool/bin
+#
 # Init pyenv
 if command -v pyenv 1>/dev/null 2>&1; then
     eval "$(pyenv init -)"
@@ -123,3 +125,10 @@ load-nvmrc() {
 }
 add-zsh-hook chpwd load-nvmrc
 load-nvmrc
+
+# tabtab source for serverless package
+# uninstall by removing these lines or running `tabtab uninstall serverless`
+[[ -f /Users/jmfurlott/.nvm/versions/node/v8.11.1/lib/node_modules/serverless/node_modules/tabtab/.completions/serverless.zsh ]] && . /Users/jmfurlott/.nvm/versions/node/v8.11.1/lib/node_modules/serverless/node_modules/tabtab/.completions/serverless.zsh
+# tabtab source for sls package
+# uninstall by removing these lines or running `tabtab uninstall sls`
+[[ -f /Users/jmfurlott/.nvm/versions/node/v8.11.1/lib/node_modules/serverless/node_modules/tabtab/.completions/sls.zsh ]] && . /Users/jmfurlott/.nvm/versions/node/v8.11.1/lib/node_modules/serverless/node_modules/tabtab/.completions/sls.zsh
