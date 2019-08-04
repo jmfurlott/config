@@ -407,7 +407,6 @@ layers configuration. You are free to put any user code."
   (add-hook 'react-mode-hook 'prettier-js-mode)
   (setq prettier-js-args '(
     "--trailing-comma" "all"
-    "--bracket-spacing" "false"
     "--print-width" "80"
   ))
 
