@@ -2,7 +2,9 @@
 
 ;; Place your private configuration here
 (setq doom-theme 'hc-zenburn)
-(set-cursor-color "#ffa500")
+(setq evil-normal-state-cursor '(box "#ffa500")
+      evil-insert-state-cursor '(bar "#ffa500")
+      evil-visual-state-cursor '(hollow "#ffa500"))
 
 (setq doom-font (font-spec :family "DejaVu Sans Mono" :size 16))
 
