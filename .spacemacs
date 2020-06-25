@@ -31,6 +31,7 @@ values."
    ;; List of configuration layers to load.
    dotspacemacs-configuration-layers
    '(
+     git
      (ruby :variables ruby-version-manager 'rbenv)
      ruby-on-rails
      php
@@ -41,6 +42,7 @@ values."
      csv
      nginx
      sql
+     (elfeed :variables rmh-elfeed-org-files (list "~/Dropbox/notes/elfeed.org"))
      (dart :variables
       dart-backend'lsp
       lsp-dart-sdk-dir "~/misc/flutter/bin/cache/dart-sdk/"
@@ -52,16 +54,7 @@ values."
                  typescript-fmt-on-save nil
                  typescript-backend 'tide
                  )
-     ; syntax-checking
-     ; (auto-completion :variables
-     ;                  company-idle-delay 0.5
-     ;                  auto-completion-enable-snippets-in-popup t
-     ;                  auto-completion-return-key-behavior 'complete
-     ;                  auto-completion-tab-key-behavior 'complete
-     ;                  auto-completion-complete-with-key-sequence "kj")
      emacs-lisp
-     ;; react
-     git
      (javascript :variables
         node-add-modules-path t)
      (org :variables
@@ -95,6 +88,7 @@ values."
                                       ruby-hash-syntax
                                       prettier-js
                                       flutter
+                                      olivetti
                                       )
    ;; A list of packages and/or extensions that will not be install and loaded.
    dotspacemacs-excluded-packages '()
@@ -392,20 +386,20 @@ layers configuration. You are free to put any user code."
   (add-hook 'dart-mode-hook 'lsp)
 
   ;; Fill column indicator at L80
-  (setq fci-rule-width 6)
-  (setq fci-rule-color "#8faf9f")
-  (add-hook 'js2-mode-hook 'fci-mode)
-  (add-hook 'typescript-mode-hook 'fci-mode)
-  (add-hook 'web-mode-hook 'fci-mode)
-  (add-hook 'scss-mode-hook 'fci-mode)
-  (add-hook 'python-mode-hook 'fci-mode)
-  (add-hook 'javascript-mode-hook 'fci-mode)
-  (add-hook 'markdown-mode-hook 'fci-mode)
-  (add-hook 'js-mode-hook 'fci-mode)
-  (add-hook 'org-mode-hook 'fci-mode)
-  (add-hook 'ruby-mode-hook 'fci-mode)
-  (add-hook 'react-mode-hook 'fci-mode)
-  (add-hook 'rjsx-mode-hook 'fci-mode)
+  ;; (setq fci-rule-width 6)
+  ;; (setq fci-rule-color "#8faf9f")
+  (add-hook 'js2-mode-hook 'display-fill-column-indicator-mode)
+  (add-hook 'typescript-mode-hook 'display-fill-column-indicator-mode)
+  (add-hook 'web-mode-hook 'display-fill-column-indicator-mode)
+  (add-hook 'scss-mode-hook 'display-fill-column-indicator-mode)
+  (add-hook 'python-mode-hook 'display-fill-column-indicator-mode)
+  (add-hook 'javascript-mode-hook 'display-fill-column-indicator-mode)
+  (add-hook 'markdown-mode-hook 'display-fill-column-indicator-mode)
+  (add-hook 'js-mode-hook 'display-fill-column-indicator-mode)
+  (add-hook 'org-mode-hook 'display-fill-column-indicator-mode)
+  (add-hook 'ruby-mode-hook 'display-fill-column-indicator-mode)
+  (add-hook 'react-mode-hook 'display-fill-column-indicator-mode)
+  (add-hook 'rjsx-mode-hook 'display-fill-column-indicator-mode)
 
   (eval-after-load 'web-mode
     '(progn
@@ -568,6 +562,8 @@ Interactively also sends a terminating newline."
     (setq helm-grep-git-grep-command "rg --vimgrep --no-heading --smart-case --line-number --no-column")
     ;; (setq helm-grep-ag-command "rg --color=always --colors 'match:fg:black' --colors 'match:bg:yellow' --smart-case --no-heading --line-number %s %s %s")
     ;; (setq helm-grep-ag-pipe-cmd-switches '("--colors 'match:fg:black'" "--colors 'match:bg:yellow'"))
+
+    (setq elfeed-curl-program-name "/usr/local/opt/curl/bin/curl")
 
 
     ;; better(ment) ruby setup
