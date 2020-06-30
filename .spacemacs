@@ -89,6 +89,7 @@ values."
                                       prettier-js
                                       flutter
                                       olivetti
+                                      org-pomodoro
                                       )
    ;; A list of packages and/or extensions that will not be install and loaded.
    dotspacemacs-excluded-packages '()
@@ -421,8 +422,13 @@ layers configuration. You are free to put any user code."
   ;; (with-eval-after-load 'org-projectile
   ;; (defun org-projectile-get-project-todo-file (project-path)
   ;;   (concat "~/Dropbox/notes/" (file-name-nondirectory (directory-file-name project-path)) ".org")))
-  (setq org-default-notes-file (concat org-directory "/inbox.org"))
-  (setq deft-directory "~/Dropbox/notes")
+  (with-eval-after-load 'org
+    (setq org-default-notes-file (concat org-directory "/inbox.org"))
+    (setq deft-directory "~/Dropbox/notes")
+
+    (setq org-todo-keywords
+          '((sequence "TODO" "IN-PROGRESS" "WAITING" "|" "DONE" "CANCELED")))
+    )
 
   ;; Indenting guide
   (indent-guide-global-mode)
