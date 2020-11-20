@@ -25,7 +25,8 @@
 ;; There are two ways to load a theme. Both assume the theme is installed and
 ;; available. You can either set `doom-theme' or manually load a theme with the
 ;; `load-theme' function. This is the default:
-(setq doom-theme 'doom-zenburn)
+;; (setq doom-theme 'doom-zenburn)
+(setq doom-theme 'doom-hc-zenburn)
 
 (custom-set-faces!
   '(org-hide :foreground "#3F3F3F")
@@ -35,13 +36,15 @@
 
 ;; If you use `org' and don't want your org files in the default location below,
 ;; change `org-directory'. It must be set before org loads!
-(setq org-directory "~/org/")
-(setq org-journal-dir "~/org/journal")
+(setq org-directory "/Volumes/GoogleDrive/My Drive/notes")
+(setq org-journal-dir "/Volumes/GoogleDrive/My Drive/notes")
 (use-package! org-superstar
   :after org
   :config
   (add-hook 'org-mode-hook (lambda () (org-superstar-mode 1)))
   (setq org-hide-leading-stars t)
+
+  (map! :leader (:prefix ("m" . "org") :desc "Hide sublevels" "H" 'hide-sublevels))
 )
 
 ;; This determines the style of line numbers in effect. If set to `nil', line
@@ -67,7 +70,6 @@
 (add-hook 'ruby-mode-hook 'display-fill-column-indicator-mode)
 
 
-
 ;; Here are some additional functions/macros that could help you configure Doom:
 ;;
 ;; - `load!' for loading external *.el files relative to this one
@@ -90,12 +92,24 @@
 (global-set-key (kbd "C-x C-c") 'nil)
 
 
-;; (treemacs-follow-mode t)
-
+;; For setting up Github integration into magit
 (setq auth-sources '("~/.authinfo"))
 
+;; Emacs radio
 (map! :leader (:prefix ("r" . "eradio") :desc "Play a radio channel" "p" 'eradio-play))
 (map! :leader (:prefix ("r" . "eradio") :desc "Stop the radio player" "s" 'eradio-stop))
 (setq eradio-channels '(("def con - soma fm" . "https://somafm.com/defcon256.pls")          ;; electronica with defcon-speaker bumpers
 			("vaporwaves - soma fm" . "https://somafm.com/vaporwaves.pls")      ;; vaporwaves
                        ))
+
+
+;; Python mode
+(setq python-shell-interpreter "/usr/local/bin/python" flycheck-python-pycompile-executable "/usr/local/bin/python")
+
+(subword-mode +1)
+
+(defun web-ui-format ()
+  (interactive)
+  (call-process-shell-command "yarn format &" nil 0)
+)
+(map! :leader (:prefix ("d" . "datadog") :desc "Format web-ui project" "f" 'web-ui-format))
