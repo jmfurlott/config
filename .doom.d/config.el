@@ -25,7 +25,6 @@
 ;; There are two ways to load a theme. Both assume the theme is installed and
 ;; available. You can either set `doom-theme' or manually load a theme with the
 ;; `load-theme' function. This is the default:
-;; (setq doom-theme 'doom-zenburn)
 (setq doom-theme 'doom-hc-zenburn)
 
 (custom-set-faces!
@@ -91,25 +90,26 @@
 (setq evil-want-fine-undo t)
 (global-set-key (kbd "C-x C-c") 'nil)
 
-
 ;; For setting up Github integration into magit
 (setq auth-sources '("~/.authinfo"))
 
-;; Emacs radio
-(map! :leader (:prefix ("r" . "eradio") :desc "Play a radio channel" "p" 'eradio-play))
-(map! :leader (:prefix ("r" . "eradio") :desc "Stop the radio player" "s" 'eradio-stop))
-(setq eradio-channels '(("def con - soma fm" . "https://somafm.com/defcon256.pls")          ;; electronica with defcon-speaker bumpers
-			("vaporwaves - soma fm" . "https://somafm.com/vaporwaves.pls")      ;; vaporwaves
-                       ))
-
-
 ;; Python mode
 (setq python-shell-interpreter "/usr/local/bin/python" flycheck-python-pycompile-executable "/usr/local/bin/python")
-
-(subword-mode +1)
 
 (defun web-ui-format ()
   (interactive)
   (call-process-shell-command "yarn format &" nil 0)
 )
-(map! :leader (:prefix ("d" . "datadog") :desc "Format web-ui project" "f" 'web-ui-format))
+
+(global-subword-mode 1)
+
+;; Hides utf-8 in the mode line
+(defun doom-modeline-conditional-buffer-encoding ()
+  "We expect the encoding to be LF UTF-8, so only show the modeline when this is not the case"
+  (setq-local doom-modeline-buffer-encoding
+              (unless (and (memq (plist-get (coding-system-plist buffer-file-coding-system) :category)
+                                 '(coding-category-undecided coding-category-utf-8))
+                           (not (memq (coding-system-eol-type buffer-file-coding-system) '(1 2))))
+                t)))
+
+(add-hook 'after-change-major-mode-hook #'doom-modeline-conditional-buffer-encoding)
